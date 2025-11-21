@@ -23,15 +23,15 @@
   </div>
   <main class="flex flex-col justify-center w-[432px] bg-[#B77466] gap-1 rounded-lg mx-auto">
       <h2 class="flex justify-center mt-4 mb-4">Login</h2>
-      <form class=" flex flex-col mx-auto pl-2 gap-2">
+      <form id="login-form" class=" flex flex-col mx-auto pl-2 gap-2">
         <div class="flex flex-col gap-1">
-          <label class="text-white" for="full-name">Email</label>
-          <input class="border p-1 bg-white w-80 h-8" type="text" id="full-name"/>
+          <label class="text-white" for="name">Email</label>
+          <input class="pl-1 border p-1 bg-white w-80 h-8" type="email" id="email" placeholder="Write your email"/>
           <span class="text-red-300">Emails must to contain "@stud.noroff.no"</span>
         </div>
         <div class="flex flex-col gap-1">
-          <label class="text-white" for="full-name">Password</label>
-          <input class="border p-1 bg-white w-80 h-8" type="text" id="full-name"/>
+          <label class="text-white" for="password">Password</label>
+          <input class="pl-1 border p-1 bg-white w-80 h-8" type="password" id="password" placeholder="Write your password"/>
           <span class="text-red-300">Invalid Password</span>
         </div>
         <button class=" mx-auto rounded-md p-2 bg-[#432323] w-20 text-white mt-8 mb-4 hover:bg-[#B77466] hover:text-[#432323] hover:text-white hover:border shadow-xs">Register</button>

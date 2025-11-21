@@ -11,3 +11,6 @@ main h2 {
     color: white;
 }
 
+.name-span {
+    display: none;
+}
