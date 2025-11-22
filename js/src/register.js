@@ -28,7 +28,7 @@ registerForm.addEventListener("submit", async (event) =>  {
         const response = await registerUser(userData);
         if(response.data?.name) {
             alert("Succesfull Registration");
-            window.location.href = '../login.html';
+            window.location.href = '../../pages/login.html';
         }   else if (response.error) {
             alert(response.error[0].message);
         } 

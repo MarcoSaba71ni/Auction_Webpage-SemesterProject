@@ -14,3 +14,7 @@ main h2 {
 .name-span {
     display: none;
 }
+
+.loading-spinner {
+    display: none;
+}
