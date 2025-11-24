@@ -1,5 +1,6 @@
 import { loginUser } from "../api/auth.js";
-
+import { saveToken } from "../storage/local.js";
+import { loginError } from "../api/api.js";
 
 const loginForm = document.getElementById('login-form');
 const loginBtn = document.getElementById('login-btn');
@@ -12,11 +13,33 @@ loginForm.addEventListener('submit', async (event) => {
     }
 
     // TODO: FORM VALIDATION
-    const response = await loginUser(credentials);
-    if(response.data?.email) {
-        alert("Succesful Login");
-        window.location.href = '../../pages/login.html';
+    try {
+        const response = await loginUser(credentials);
+        console.log(response);
+
+        if (credentials.email.length > 0 && !credentials.email.endsWith("@stud.noroff.no")) {
+            const emailAlert = document.getElementById('email-alert');
+            emailAlert.style.display = 'block';
+        return; 
     }
-    //TODO: ERROR HANDLING
+
+        if (response.data?.accessToken) {
+            saveToken(response.data.accessToken, {
+                name: response.data.name,
+                email: response.data.email
+            });
+            window.location.href = "../index.html";
+        }
+        
+        if (response.errors?.length) {
+            loginError(response.errors[0].message);
+            console.log(response.errors[0].message);
+        }
+
+    } catch (error) {
+        console.log(error?.message);
+    }
+
+    // TODO: ERROR HANDLING
 
 })
