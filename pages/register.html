@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
   <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Khmer&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-
 </head>
 <body class="flex flex-col justify-center min-h-screen bg-[#f7f7f7]">
   <nav class="flex flex-col justify-center mx-auto">
@@ -27,17 +26,17 @@
         <div class="flex flex-col gap-1">
           <label for="name" class="text-white">Full Name</label>
           <input class="border p-1 bg-white w-80 h-8" type="name" id="name" placeholder="Write your name"/>
-          <span id="name-span" style="display: none;" class=" text-red-300">Invalid Name</span>
+          <span id="name-span" style="display: none;" class=" text-red-300">Name must to contain more than 3 characters</span>
         </div>
         <div class="flex flex-col gap-1">
           <label for="email" class="text-white" for="full-name">Email</label>
           <input class="pl-1 border p-1 bg-white w-80 h-8" type="email" id="email" placeholder="Write your email"/>
-          <span class="hidden text-red-300" style="display: none;">Emails must to contain "@stud.noroff.no"</span>
+          <span id="email-span" class="hidden text-red-300" style="display: none;">Emails must to contain "@stud.noroff.no"</span>
         </div>
         <div class="flex flex-col gap-1">
           <label for="full-password" class="text-white" >Password</label>
           <input class="pl-1 border p-1 bg-white w-80 h-8" type="password" id="password" placeholder="Write your password"/>
-          <span class="hidden text-red-300" style="display: none;">Invalid Password</span>
+          <span id="span-invalid-register" class="hidden text-red-300" style="display: none;">Invalid Password</span>
         </div>
         <button id="register-btn" type="submit" class="flex justify-center mx-auto rounded-md p-2 bg-[#432323] w-20 text-white mt-8 mb-4 hover:bg-[#B77466] hover:text-[#432323] hover:text-white hover:border shadow-xs">Register</button>
       </form>

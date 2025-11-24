@@ -55,3 +55,17 @@ export async function apiDelete () {
 
 }
 
+
+export async function loginError(response) {
+    const invalidLogin = document.getElementById('span-invalid-login');
+    const message = response?.errors?.[0]?.message || "Invalid Email or Password";    
+    invalidLogin.textContent = message;
+    invalidLogin.style.display = 'block';
+}
+
+export async function registerError (response) {
+    const invalidRegister = document.getElementById('span-invalid-register');
+    const message = response?.errors?.[0]?.message || "Invalid Email or Username"; 
+    invalidRegister.textContent = message;
+    invalidRegister.style.display = 'block';
+}

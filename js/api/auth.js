@@ -5,5 +5,5 @@ export async function registerUser(userData) {
 }
 
 export async function loginUser (credentials) {
-    return await apiGet('/auth/login', credentials)
+    return await apiPost('/auth/login', credentials)
 }

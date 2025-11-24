@@ -1,6 +1,7 @@
 
 import { registerUser } from "../api/auth.js";
-import { registerValidation } from "../utils/formValidation.js";
+
+import { registerError } from "../api/api.js";
 // import registerUser from ../auth/
 
 const registerForm = document.getElementById("register-form");
@@ -16,11 +17,23 @@ registerForm.addEventListener("submit", async (event) =>  {
     }
     console.log(userData);
 
-    const isValid = registerValidation(userData.name, userData.email, userData.password);
-
-    if(!isValid) {
+    if (userData.name.length < 3 ) {
+        const nameSpan = document.getElementById('name-span');
+        nameSpan.style.display = 'block';
         return;
     }
+
+    if (userData.email.length === 0 || !userData.email.endsWith("@stud.noroff.no")) {
+        const emailSpan = document.getElementById('email-span');
+        emailSpan.style.display = 'block';
+        return;
+    }
+
+    if (userData.password.length < 6) {
+    const passwordSpan = document.getElementById('password-span');
+    passwordSpan.style.display = 'block';
+    return;
+}
     // TODO: validation inputs (name, email, password)
 
 
@@ -29,8 +42,9 @@ registerForm.addEventListener("submit", async (event) =>  {
         if(response.data?.name) {
             alert("Succesfull Registration");
             window.location.href = '../../pages/login.html';
-        }   else if (response.error) {
-            alert(response.error[0].message);
+        }   else if (response?.errors) {
+            registerError(response.errors[0].message);
+            alert(response.errors[0].message);
         } 
         else {
             alert("Error: Unsuccesful Registration");
