@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../src/tailwind.css" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+        <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Khmer&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <title>Main Page || Libertini</title>
+    </head>
+    <body>
+        <header class="flex flex-row justify-center gap-6 border p-4">
+            <div class="pr-4">
+                <img src="images/Libertini logo-copy.png" class="w-[150px] h-[150] object-cover" >
+            </div>
+            <div class="flex flex-row items-center  gap-12">
+                <h2 class="text-3xl font-[Playfair]">Auction</h2>
+                <div>
+                    <input class="border rounded-md p-1 bg-white w-60 h-8"></input>
+                </div>
+                <div id="profile-div" class="flex ml-auto gap-8">
+                    <a href="pages/profile.html">
+                        <img src="images/numero-leilao.jpg" class="w-10 h-10 object-cover">
+                    </a>
+                </div>
+            </div>
+        </header>
+       <nav class="border py-3 bg-[#fff7f0]">
+            <ul class="flex justify-center gap-10 text-xl font-[Playfair]">
+                <li class="cursor-pointer">Home</li>
+                <li class="cursor-pointer">About Us</li>
+                <li class="cursor-pointer">Auction</li>
+            </ul>
+        </nav>
+        <main>
+            <section class="flex h-screen">
+                <div class="w-1/2">
+                    <img src="images/abrigue-o-leilão-martelo-do-símbolo-da-autoridade-e-casa-diminuta-conceito-sala-tribunal-112615384.webp" class="w-full h-full object-cover">
+                </div>
+
+                <div class="w-1/2 flex flex-col justify-center items-center text-center px-16 bg-[#fff7f0]">
+                    <h1 class="text-5xl font-[Playfair] mb-6">Place your Bid</h1>
+                    <h3 class="text-2xl mb-8 font-[Playfair]">We get exclusive new bids everyday</h3>
+                    <a href="pages/listing.html"
+                    class="bg-[#432323] text-white text-2xl px-8 py-3 rounded hover:bg-[#9c6a6a] transition">
+                        Auctions
+                    </a>
+                </div>
+            </section>
+
+            <section class="flex flex-row flex-wrap justify-space-between h-full bg-[#FFE1AF]">
+                 <div class="w-1/2">
+                    <img 
+                    src="images/old-bidding.jpg" 
+                    class="m-15 w-115 h-115 object-cover">
+                </div>
+                <div class="w-1/2 flex flex-col justify-center items-center text-center px-10">
+                    <h2 class="text-5xl font-[Playfair] mb-4">About Us</h2>
+                    <h3 class="text-2xl mb-6 font-[Playfair]">We are responsible for auction in 27 different countries.</h3>
+                    <h3 class="text-2xl mb-6 font-[Playfair]">Responsible for auctions in different business mainly in Scandinavia. </h3>
+                </div>
+            </section>
+            <section class="text-center my-20">
+                <h2 class="text-2xl">
+                    <a href="pages/register.html" class="text-blue-500 hover:text-blue-700">Register</a> /
+                    <a href="pages/login.html" class="text-blue-500 hover:text-blue-700">Login</a>
+                    to place bids and get exclusive deals.
+                </h2>
+            </section>
+
+        </main>
+        <footer class="flex flex-col bg-[#E2B59A] pt-12 pb-12 gap-12">
+            <div class="mx-auto">
+                <ul class="flex flex-row gap-12">
+                    <li><a href="index.html" class="cursor-pointer">Home</a></li>
+                    <li><a href="index.html" class="cursor-pointer">About Us</a></li>
+                    <li><a href="pages/listing.html" class="cursor-pointer">Auctions</a></li>
+                </ul>
+            </div>
+            <div class="mx-auto">
+                <img src="images/Libertini logo-copy.png" class="w-100 h-auto object-cover">
+            </div>
+        </footer>
+    </body>
+</html>

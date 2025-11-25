@@ -10,3 +10,8 @@ export async function getToken() {
     const token = localStorage.getItem('accessToken');
     return token;
 }
+
+export function getUser() {
+    const user = localStorage.getItem("user");
+    return user;
+}
