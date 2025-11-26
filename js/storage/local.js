@@ -11,7 +11,12 @@ export async function getToken() {
     return token;
 }
 
+export async function deleteUser () {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem("user");
+}
+
 export function getUser() {
     const user = localStorage.getItem("user");
-    return user;
+    return JSON.parse(user);
 }
