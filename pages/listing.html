@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../src/tailwind.css" rel="stylesheet">
+        <link href="../css/style.css" rel="stylesheet">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
@@ -30,7 +31,7 @@
                 </form>
                 <div id="profile-div" style="display: none;" class="flex ml-auto gap-8">
                     <a href="pages/profile.html">
-                        <img src="images/numero-leilao.jpg" class="w-10 h-10 rounded-md object-cover">
+                        <img src="../images/numero-leilao.jpg" class="w-10 h-10 rounded-md object-cover">
                     </a>
                 </div>
                 <div>
@@ -53,11 +54,15 @@
                 <h1 class="text-4xl font-[Playfair] mb-6 mx-auto gap-4 ">Action House</h1>
                 <div class=" flex flex-col mx-auto gap-1 ">
                     <h2>Log in to create your bid</h2>
-                    <a class="border rounded-md w-auto p-2 bg-green-700 text-white text-center">Create your bid</a>
+                    <a class="border rounded-md w-auto p-2 bg-green-700 text-white text-center ">Create your bid</a>
                 </div>
+            </section>
+            <section>
+                <div id="list-feed">
 
+                </div>
             </section>
         </main>
-        <script type="module" src="js/src/index.js"></script>
+        <script type="module" src="../js/src/listing.js"></script>
     </body>
 </html>
