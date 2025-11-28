@@ -8,6 +8,7 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+        
         <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Khmer&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
         <title>Main Page || Libertini</title>
@@ -38,27 +39,28 @@
                     <button id="logout-btn" class="p-2 bg-red-700 text-white border rounded-md  cursor-pointer" style="display: none;">Logout</button>
                 </div>
                 <div>
-                    <a href="pages/login.html" id="login-btn" class="p-2 bg-green-700 text-white text-black border rounded md cursor-pointer">Sign In</a>
+                    <a href="login.html" id="login-btn" class="p-2 bg-green-700 text-white text-black border rounded md cursor-pointer">Sign In</a>
                 </div>
             </div>
         </header>
         <nav class="border py-3 bg-[#fff7f0]">
             <ul class="flex justify-center gap-10 text-xl font-[Playfair]">
-                <li class="cursor-pointer">Home</li>
-                <li class="cursor-pointer">About Us</li>
-                <li class="cursor-pointer">Auction</li>
+                <a href="../index.html"><li class="cursor-pointer">Home</li></a>
+                <a href="../index.html"><li class="cursor-pointer">About Us</li></a>
+                <a href="listing.html"><li class="cursor-pointer">Auction</li></a>
             </ul>
         </nav>
         <main>
             <section class=" flex flex-col justify-center pt-8">
                 <h1 class="text-4xl font-[Playfair] mb-6 mx-auto gap-4 ">Action House</h1>
                 <div class=" flex flex-col mx-auto gap-1 ">
-                    <h2>Log in to create your bid</h2>
-                    <a class="border rounded-md w-auto p-2 bg-green-700 text-white text-center ">Create your bid</a>
+                    <h2 id="sign-in_text" >Log in to create your bid</h2>
+                    <button href="login.html" id="login-link"  class="border rounded-md w-auto p-2 bg-green-700 text-white text-center cursor-pointer">Create your bid</button>
+                    <a href="create.html" id="create-link" class="border rounded-md w-auto p-2 bg-green-700 text-white text-center">Create your bid</a>
                 </div>
             </section>
             <section>
-                <div id="list-feed">
+                <div class="flex flex-row justify-center gap-4 flex-wrap pt-12 mx-auto" id="list-feed">
 
                 </div>
             </section>

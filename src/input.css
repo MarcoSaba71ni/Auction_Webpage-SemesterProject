@@ -1,1 +1,38 @@
 @import "tailwindcss";
+
+
+.card-div {
+    @apply block w-70 h-auto border rounded-md overflow-hidden bg-gray-100 flex flex-col items-center justify-center;
+}
+
+.card-link {
+    @apply w-full;
+}
+
+.auction-img {
+    @apply w-full h-60 object-cover;
+}
+
+.card-div {
+    @apply flex flex-col gap-2;
+}
+
+.card-body {
+    @apply flex flex-col gap-6;
+}
+
+.auction-title {
+    @apply text-2xl;
+}
+
+.bid-number {
+    @apply font-bold text-sm text-red-500;
+}
+
+.bid-deadline {
+    @apply font-bold;
+}
+
+.btn-bid {
+    @apply font-bold text-white bg-[#B77466] rounded-lg p-1 cursor-pointer mb-2 mt-2;
+}
