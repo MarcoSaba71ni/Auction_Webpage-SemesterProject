@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="../src/tailwind.css" rel="stylesheet">
+        <link href="../css/style.css" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+        
+        <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Khmer&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <title>Main Page || Libertini</title>
+    </head>
+    <body>
+        <header class="flex flex-row justify-center gap-6 border p-4">
+            <div class="pr-4">
+                <img src="/images/Libertini logo-copy.png" class="w-[150px] h-[150] object-cover" >
+            </div>
+            <div class="flex flex-row items-center  gap-12">
+                <h2 class="text-3xl font-[Playfair]">Auction</h2>
+                <form class="max-w-md mx-auto">   
+                    <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+                        </div>
+                        <input type="search" id="search" class="block w-full rounded-md p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Search" required />
+                        <button type="button" class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">Search</button>
+                    </div>
+                </form>
+                <div id="profile-div" style="display: none;" class="flex ml-auto gap-8">
+                    <a href="pages/profile.html">
+                        <img src="../images/numero-leilao.jpg" class="w-10 h-10 rounded-md object-cover">
+                    </a>
+                </div>
+                <div>
+                    <button id="logout-btn" class="p-2 bg-red-700 text-white border rounded-md  cursor-pointer" style="display: none;">Logout</button>
+                </div>
+                <div>
+                    <a href="login.html" id="login-btn" class="p-2 bg-green-700 text-white text-black border rounded md cursor-pointer">Sign In</a>
+                </div>
+            </div>
+        </header>
+        <nav class="border py-3 bg-[#fff7f0]">
+            <ul class="flex justify-center gap-10 text-xl font-[Playfair]">
+                <a href="../index.html"><li class="cursor-pointer">Home</li></a>
+                <a href="../index.html"><li class="cursor-pointer">About Us</li></a>
+                <a href="listing.html"><li class="cursor-pointer">Auction</li></a>
+            </ul>
+        </nav>
+        <main class="flex flex-col gap-4">
+            <h2 class="font-[Orbitron] text-3xl flex justify-center pt-12" >Create Your Bid</h2>
+            <form class="border rounded-md gap-2 flex flex-col mx-auto w-auto p-6">
+                <div class="flex flex-col gap-1">
+                    <label>Title</label>
+                    <input class="border rounded-sm p-2 bg-white w-80 h-8" type="name" id="title" placeholder="Write post title"/>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label>Description</label>
+                    <input class="border rounded-sm p-2 bg-white w-80 h-8" type="name" id="description" placeholder="Write post Description"/>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label>Tags</label>
+                    <input class="border rounded-sm p-2 bg-white w-80 h-8" type="name" id="tag" placeholder="Write Post Tag"/>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label>Media</label>
+                    <input class="border rounded-sm p-2 bg-white w-80 h-8" type="name" id="media-url" placeholder="Write Post Url "/>
+                    <input class="border rounded-sm p-2 mt-1 bg-white w-80 h-8" type="name" id="media-alt" placeholder="Write Media Alt "/>
+                </div>
+                <div class="mx-auto">
+                    <button id="btn-create" class="mx-auto font-bold text-white bg-[#B77466] w-auto rounded-lg p-2 cursor-pointer mb-2 mt-2;" type="submit">Create</button>
+                </div>
+            </form>
+        </main>
+        <script type="module" src="../js/src/listing.js"></script>
+    </body>
+</html>

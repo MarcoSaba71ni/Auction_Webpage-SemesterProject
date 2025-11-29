@@ -22,5 +22,4 @@ logOutBtn.addEventListener("click", async ()=> {
     alert("You are logged out and redirected to the Main Page");
     deleteUser();
     window.location.href = 'index.html';
-
 })
