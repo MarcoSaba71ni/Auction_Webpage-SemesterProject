@@ -23,20 +23,35 @@ async function createAuction () {
     const createdAuction = {
         title: createForm.title.value.trim(),
         description: createForm.description.value.trim(),
+        tags:  createForm.tag.value.trim() ? [createForm.tag.value.trim()] : [],
         media: [ 
             {
                 url: createForm["media-url"].value.trim(),
                 alt: createForm["media-alt"].value.trim()
             }
-        ]
-    };
+        ],
+        endsAt: new Date (createForm.deadline.value.trim()).toISOString()
 
-    const response = await apiPost('/auction/listings', createdAuction);
+    };
+    try {
+        const response = await apiPost(`/auction/listings?_=${Date.now()}`, createdAuction);
+        console.log(response);
+        if(response?.data) {
+            alert("Succesfull creation! You are being redirected to the main page!");
+            window.location.href = "listing.html";
+        }
+        else if (response?.errors) {
+            console.log(response.errors);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
 
 };
 
-createForm.addEventListener("submit", (e) => {
+createForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     createAuction();
-})
+});
 

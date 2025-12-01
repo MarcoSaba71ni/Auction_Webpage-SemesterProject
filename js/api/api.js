@@ -1,8 +1,8 @@
 import {API_BASE , API_KEY} from "../utils/constants.js";
 
 
-export async function apiGet( endpoint, token = null) {
-
+export async function apiGet( endpoint) {
+    const token = localStorage.getItem("accessToken");
     const options = {
         headers : {
             "Content-Type" : "application/json",
@@ -24,7 +24,8 @@ export async function apiGet( endpoint, token = null) {
   
 }
 
-export async function apiPost(endpoint, data, token = null) {
+export async function apiPost(endpoint, data) {
+    const token = localStorage.getItem("accessToken");
     const options = {
         headers : {
             'Content-Type' : 'application/json',
@@ -42,13 +43,15 @@ export async function apiPost(endpoint, data, token = null) {
 
     const response = await fetch(`${API_BASE}${endpoint}`, options,);
     const result = await response.json();
-    return result;
+
 
     //  current poor error handling!
     if(!response.ok) {
-        console.log(error);
+        console.error("API POST error:", result);
+        throw result; // let caller handle it
     }
-
+    
+    return result;
 }
 
 export async function apiDelete () {

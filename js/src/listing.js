@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
 async function listFeed() {
     const auctionUrl = '/auction/listings';
     const response = await apiGet(`${auctionUrl}`);
+    console.log("RAW API RESPONSE:", response);
     const data = response.data;
 
     data.forEach(auction => {
