@@ -18,6 +18,11 @@ export async function apiGet( endpoint) {
 
     const response = await fetch(`${API_BASE}${endpoint}`, options);
     const data = await response.json();
+
+        if (!response.ok) {
+        console.error("API GET error:", data);
+        throw data;
+    }
     
     //handle error
     return data;

@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
 
 async function listFeed() {
-    const auctionUrl = '/auction/listings';
+    const auctionUrl = '/auction/listings?_active=true&_sort=created&sortOrder=desc';
     const response = await apiGet(`${auctionUrl}`);
     console.log("RAW API RESPONSE:", response);
     const data = response.data;
