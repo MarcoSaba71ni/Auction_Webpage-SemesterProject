@@ -1,4 +1,4 @@
-import { renderFeed } from "../api/renderList.js";
+import { renderFeed } from "../components/renderList.js";
 import { apiGet } from "../api/api.js";
 import { getUser , deleteUser } from "../storage/local.js";
 

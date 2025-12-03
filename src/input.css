@@ -36,3 +36,34 @@
 .btn-bid {
     @apply font-bold text-white bg-[#B77466] rounded-lg p-1 cursor-pointer mb-2 mt-2;
 }
+
+
+/* PROFILE PAGE */
+
+.profile-section {
+    @apply mx-18 border pt-8
+}
+
+.profile-img {
+    @apply w-50 h-50 rounded-full
+}
+
+.info-div {
+    @apply flex flex-row justify-around
+}
+
+.info-div {
+    @apply pr-12
+}
+
+.text-div {
+    @apply flex flex-col justify-around gap-6
+}
+
+.profile-name {
+    @apply text-2xl text-bold text-red-500
+}
+
+.edit-btn {
+    @apply border p-2 bg-blue-500 text-white rounded-md;
+}

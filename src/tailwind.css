@@ -680,6 +680,35 @@
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
 }
+.profile-section {
+  margin-inline: calc(var(--spacing) * 18);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  padding-top: calc(var(--spacing) * 8);
+}
+.profile-img {
+  height: calc(var(--spacing) * 50);
+  width: calc(var(--spacing) * 50);
+  border-radius: calc(infinity * 1px);
+}
+.info-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.info-div {
+  padding-right: calc(var(--spacing) * 12);
+}
+.text-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: calc(var(--spacing) * 6);
+}
+.profile-name {
+  font-size: var(--text-2xl);
+  line-height: var(--tw-leading, var(--text-2xl--line-height));
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
