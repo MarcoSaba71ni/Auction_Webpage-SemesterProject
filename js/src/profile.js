@@ -1,11 +1,35 @@
 import { renderProfilePage , userAuction, userBid} from "../components/renderProfile.js";
 import { profileFetch , auctionFetch , bidFetch } from "../api/profileFetch.js";
+import { getUser } from "../storage/local.js";
 
 // Get the name in the url search parameter
 
 const urlParams = new URLSearchParams(window.location.search);
 const username = urlParams.get("name");
 console.log(username);
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const user = getUser();
+
+    const elementsToToggle = [
+        { id : 'profile-div', showIf: !!user },
+        { id: 'logout-btn', showIf: !!user },
+        { id: 'login-btn', showIf: !user },
+        { id: 'register_login-div', showIf: !user }
+    ];
+    
+    elementsToToggle.forEach(({id, showIf}) => {
+        const element = document.getElementById(id);
+        element.style.display = showIf ? "flex" : "none";
+    });
+
+    // ONLY call renderAvatar if user exists
+    if (user) {
+        renderAvatar(user);
+    }
+});
+
 
 async function fetchProfile () {
     try {
