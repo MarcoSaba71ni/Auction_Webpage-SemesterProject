@@ -41,29 +41,54 @@
 /* PROFILE PAGE */
 
 .profile-section {
-    @apply mx-18 border pt-8
+    @apply mx-18 border pt-8 py-4 mb-6
+}
+
+.banner-div {
+    @apply w-full h-65 relative
 }
 
 .profile-img {
-    @apply w-50 h-50 rounded-full
+    @apply w-50 h-50 rounded-full absolute left-30 top-[65%]
 }
 
 .info-div {
-    @apply flex flex-row justify-around
+    @apply flex flex-row mx-auto justify-evenly gap-12 mt-4 mb-12 flex-wrap
 }
 
-.info-div {
-    @apply pr-12
+.text-div {
+    @apply mr-12
 }
+
 
 .text-div {
     @apply flex flex-col justify-around gap-6
 }
 
 .profile-name {
-    @apply text-2xl text-bold text-red-500
+    @apply text-2xl font-semibold
+}
+
+.info-btn-div {
+    @apply flex flex-row gap-6 justify-around
 }
 
 .edit-btn {
-    @apply border p-2 bg-blue-500 text-white rounded-md;
+    @apply border p-2 mt-2 bg-[#957C62] text-white rounded-md 
+}
+
+/*.interacted-auctions {
+    @apply border mx-18 m-6 p-6 
+} */
+
+.interacted-auctions {
+    @apply flex flex-row justify-center gap-4 flex-wrap pt-12 m-6 p-6 
+}
+
+.auction-text {
+    @apply flex justify-center font-bold text-2xl
+}
+
+.empty-bid {
+    @apply flex justify-center mb-6
 }

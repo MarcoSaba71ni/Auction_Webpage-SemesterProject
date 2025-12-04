@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", ()=> {
         const element = document.getElementById(id);
         element.style.display = showIf? "block" : "none";
     })
+
+    if (user) {
+        renderAvatar(user);
+    }
 });
 
 
@@ -53,3 +57,12 @@ loginLink.addEventListener("click", async ()=> {
     window.location.href = 'login.html';
     alert("You are being redirected to the Sign In page")
 })
+
+function renderAvatar(user) {
+    const profilePath = document.getElementById('profile-path');
+    const profileBannerImg = document.getElementById('profile-banner-img');
+
+    profilePath.href = `profile.html?name=${user.name}`;
+
+    profileBannerImg.src = user.avatar?.url;
+}

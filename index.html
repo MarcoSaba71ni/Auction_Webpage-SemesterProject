@@ -13,10 +13,10 @@
     <body>
         <header class="flex flex-row justify-center gap-6 border p-4">
             <div class="pr-4">
-                <img src="images/Libertini logo-copy.png" class="w-[150px] h-[150] object-cover" >
+                <a href="index.html"><img src="images/Libertini logo-copy.png" class="w-[150px] h-[150] object-cover" ></a>
             </div>
             <div class="flex flex-row items-center  gap-12">
-                <h2 class="text-3xl font-[Playfair]">Auction</h2>
+                <a href="pages/listing.html"><h2 class="text-3xl font-[Playfair]">Auction</h2></a>
                 <form class="max-w-md mx-auto">   
                     <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
                     <div class="relative">
@@ -70,18 +70,18 @@
                 </div>
             </section>
 
-            <section class="flex flex-row flex-wrap justify-space-between h-full bg-[#FFE1AF]">
-                 <div class="w-1/2">
-                    <img 
-                    src="images/old-bidding.jpg" 
-                    class="m-15 w-115 h-115 object-cover">
-                </div>
-                <div class="w-1/2 flex flex-col justify-center items-center text-center px-10">
-                    <h2 class="text-5xl font-[Playfair] mb-4">About Us</h2>
-                    <h3 class="text-2xl mb-6 font-[Playfair]">We are responsible for auction in 27 different countries.</h3>
-                    <h3 class="text-2xl mb-6 font-[Playfair]">Responsible for auctions in different business mainly in Scandinavia. </h3>
+            <section class="flex bg-[url('/images/old-bidding.jpg')] bg-cover bg-center flex-row flex-wrap justify-between h-130 my-10">
+                <div class="w-1/2 flex flex-col justify-center mx-auto items-center text-center ">
+                    <h2 class="text-5xl text-white font-[Playfair] mb-4">About Us</h2>
+                    <h3 class="text-2xl text-white mx-8 mb-6  items-start">
+                        We are responsible for auctions in 27 different countries, mainly in Scandinavia.
+                    </h3>
+                    <a href="#" class="bg-[#432323] text-white text-xl px-4 py-2 rounded-lg hover:bg-[#9c6a6a] transition">
+                        Discover More
+                    </a>
                 </div>
             </section>
+
 
 
         </main>

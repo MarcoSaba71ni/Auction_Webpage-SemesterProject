@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="../src/tailwind.css" rel="stylesheet">
-
+        <link href="../css/style.css" rel="stylesheet">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
@@ -50,9 +50,23 @@
                 <a href="listing.html"><li class="cursor-pointer">Auction</li></a>
             </ul>
         </nav>
-        <main>
+        <main class="flex flex-col gap-6">
             <section class="profile-section" id="profile-section">
                 
+            </section>
+            <section class="border flex flex-col mx-18">
+                <h1 class="font-[Orbitron] text-3xl flex justify-center pt-12"> Auction List</h1>
+                <div id="interacted-auctions">
+                
+                </div> 
+            </section>
+
+
+            <section class="border flex flex-col mx-18" >
+                <h1 class="font-[Orbitron] text-3xl flex justify-center py-12"> Bids History</h1>
+                <div id="users-bid">
+
+                </div>
             </section>
         </main>
         <script type="module" src="../js/src/profile.js"></script>
