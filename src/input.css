@@ -92,3 +92,15 @@
 .empty-bid {
     @apply flex justify-center mb-6
 }
+
+/* Auction Page */
+
+.img-two,
+.img-three, 
+.img-four {
+    @apply w-30 h-30 object-cover
+}
+
+.row-img {
+    @apply flex flex-row gap-1
+}
