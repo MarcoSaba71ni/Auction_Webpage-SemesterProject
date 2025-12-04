@@ -1,4 +1,4 @@
-import { renderFeed } from "../api/renderList.js";
+import { renderFeed } from "../components/renderList.js";
 import { apiGet } from "../api/api.js";
 import { getUser , deleteUser } from "../storage/local.js";
 
@@ -18,13 +18,18 @@ document.addEventListener("DOMContentLoaded", ()=> {
         const element = document.getElementById(id);
         element.style.display = showIf? "block" : "none";
     })
+
+    if (user) {
+        renderAvatar(user);
+    }
 });
 
 
 
 async function listFeed() {
-    const auctionUrl = '/auction/listings';
+    const auctionUrl = '/auction/listings?_active=true&_sort=created&sortOrder=desc';
     const response = await apiGet(`${auctionUrl}`);
+    console.log("RAW API RESPONSE:", response);
     const data = response.data;
 
     data.forEach(auction => {
@@ -52,3 +57,12 @@ loginLink.addEventListener("click", async ()=> {
     window.location.href = 'login.html';
     alert("You are being redirected to the Sign In page")
 })
+
+function renderAvatar(user) {
+    const profilePath = document.getElementById('profile-path');
+    const profileBannerImg = document.getElementById('profile-banner-img');
+
+    profilePath.href = `profile.html?name=${user.name}`;
+
+    profileBannerImg.src = user.avatar?.url;
+}

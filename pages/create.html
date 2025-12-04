@@ -52,29 +52,35 @@
         </nav>
         <main class="flex flex-col gap-4">
             <h2 class="font-[Orbitron] text-3xl flex justify-center pt-12" >Create Your Bid</h2>
-            <form class="border rounded-md gap-2 flex flex-col mx-auto w-auto p-6">
+            <form id="create-form" class="border rounded-md gap-2 flex flex-col mx-auto w-auto p-6">
                 <div class="flex flex-col gap-1">
                     <label>Title</label>
-                    <input class="border rounded-sm p-2 bg-white w-80 h-8" type="name" id="title" placeholder="Write post title"/>
+                    <input class="input-warn border rounded-sm p-2 bg-white w-80 h-8" type="name" name="title" id="title" placeholder="Write post title"/>
                 </div>
                 <div class="flex flex-col gap-1">
                     <label>Description</label>
-                    <input class="border rounded-sm p-2 bg-white w-80 h-8" type="name" id="description" placeholder="Write post Description"/>
+                    <input class="input-warn border rounded-sm p-2 bg-white w-80 h-8" type="name" name="description" id="description" placeholder="Write post Description"/>
                 </div>
                 <div class="flex flex-col gap-1">
                     <label>Tags</label>
-                    <input class="border rounded-sm p-2 bg-white w-80 h-8" type="name" id="tag" placeholder="Write Post Tag"/>
+                    <input class="input-warn border rounded-sm p-2 bg-white w-80 h-8" type="name" name="tag" id="tag" placeholder="Write Post Tag"/>
                 </div>
                 <div class="flex flex-col gap-1">
                     <label>Media</label>
-                    <input class="border rounded-sm p-2 bg-white w-80 h-8" type="name" id="media-url" placeholder="Write Post Url "/>
+                    <input class="border rounded-sm p-2 bg-white w-80 h-8" type="name" name="media-url" id="media-url" placeholder="Write Post Url "/>
+                    <p class=" input-warn text-red-500 text-xs" id="media-url_warn"></p>
                     <input class="border rounded-sm p-2 mt-1 bg-white w-80 h-8" type="name" id="media-alt" placeholder="Write Media Alt "/>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label>Bid Deadline</label>
+                    <input class="border rounded-sm p-2 bg-white w-80 h-8" type="datetime-local" name="deadline" id="deadline" placeholder="Deadline example: 2020-01-01T00:00:00.000Z "/>
+                    <p class="text-red-500 text-xs" style="display: none;" id="deadline_warn">Make sure the deadline is not passed or more than a year.</p>
                 </div>
                 <div class="mx-auto">
                     <button id="btn-create" class="mx-auto font-bold text-white bg-[#B77466] w-auto rounded-lg p-2 cursor-pointer mb-2 mt-2;" type="submit">Create</button>
                 </div>
             </form>
         </main>
-        <script type="module" src="../js/src/listing.js"></script>
+        <script type="module" src="../js/src/creating.js"></script>
     </body>
 </html>
