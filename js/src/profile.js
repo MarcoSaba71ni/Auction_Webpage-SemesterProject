@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     elementsToToggle.forEach(({id, showIf}) => {
         const element = document.getElementById(id);
+        if (!element) return;
         element.style.display = showIf ? "flex" : "none";
     });
 
@@ -81,6 +82,16 @@ async function fetchBid () {
         console.log(error);
     }
 }
+
+function renderAvatar(user) {
+    const profilePath = document.getElementById('profile-path');
+    const profileBannerImg = document.getElementById('profile-banner-img');
+
+    profilePath.href = `/pages/profile.html?name=${user.name}`;
+
+    profileBannerImg.src = user.avatar?.url || '';
+}
+
 
 fetchProfile();
 fetchAuction();

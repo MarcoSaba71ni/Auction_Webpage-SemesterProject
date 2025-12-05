@@ -31,15 +31,15 @@
                     </div>
                 </form>
                 <div id="profile-div" style="display: none;" class="flex ml-auto gap-8">
-                    <a href="pages/profile.html">
-                        <img src="../images/numero-leilao.jpg" class="w-10 h-10 rounded-md object-cover">
+                    <a id="profile-path">
+                        <img id="profile-banner-img" class="w-10 h-10 rounded-md object-cover">
                     </a>
                 </div>
                 <div>
                     <button id="logout-btn" class="p-2 bg-red-700 text-white border rounded-md  cursor-pointer" style="display: none;">Logout</button>
                 </div>
                 <div>
-                    <a href="login.html" id="login-btn" class="p-2 bg-green-700 text-white text-black border rounded md cursor-pointer">Sign In</a>
+                    <a href="login.html" id="login-btn" class="p-2 bg-green-700 text-white text-black border rounded md cursor-pointer" style="display: none;">SignIn</a>
                 </div>
             </div>
         </header>
@@ -55,6 +55,18 @@
 
             </section>
         </main>
+        <footer class="flex flex-col bg-[#E2B59A] pt-12 pb-12 gap-12">
+            <div class="mx-auto">
+                <ul class="flex flex-row gap-12">
+                    <li><a href="index.html" class="cursor-pointer">Home</a></li>
+                    <li><a href="index.html" class="cursor-pointer">About Us</a></li>
+                    <li><a href="pages/listing.html" class="cursor-pointer">Auctions</a></li>
+                </ul>
+            </div>
+            <div class="mx-auto">
+                <img src="../images/Libertini logo-copy.png" class="w-100 h-auto object-cover">
+            </div>
+        </footer>
         <script type="module" src="../js/src/auction.js"></script>
     </body>
 </html>

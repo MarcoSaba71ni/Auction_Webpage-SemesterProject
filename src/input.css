@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
-
-.card-div {
-    @apply block w-70 h-auto border rounded-md overflow-hidden bg-gray-100 flex flex-col items-center justify-center;
+@layer components {
+    .card-div {
+        @apply block w-70 h-auto border rounded-md overflow-hidden bg-gray-100 flex flex-col items-center justify-center;
+    }
 }
+
+
 
 .card-link {
     @apply w-full;
@@ -95,12 +98,48 @@
 
 /* Auction Page */
 
+.auction-heading {
+    @apply text-2xl mx-auto flex justify-center my-8
+}
+
+.img-one {
+    @apply w-100 h-100 object-cover
+}
+
+.auction-img-div {
+    @apply flex flex-col gap-2 my-4 mx-8 
+}
+
 .img-two,
 .img-three, 
 .img-four {
-    @apply w-30 h-30 object-cover
+    @apply w-30 h-30 object-cover 
 }
 
 .row-img {
-    @apply flex flex-row gap-1
+    @apply flex flex-row gap-2 ml-4
+}
+
+.auction-content {
+    @apply flex flex-row gap-24  bg-[#F6F3EE] mx-8
+}
+
+.bid-btn {
+     @apply border p-1 mt-2 bg-[#957C62] text-white rounded-md mx-auto
+}
+
+.input-bid {
+    @apply border mx-auto p-1 rounded-md pl-2 
+}
+
+.bid-info {
+    @apply mx-4 mt-8
+}
+
+.auction-info {
+    @apply flex flex-col gap-2 justify-start mx-auto items-start
+}
+
+.bid-end {
+    @apply font-bold mx-4 mt-4
 }

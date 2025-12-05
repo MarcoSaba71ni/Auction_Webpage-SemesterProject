@@ -644,19 +644,21 @@
     }
   }
 }
-.card-div {
-  display: block;
-  display: flex;
-  height: auto;
-  width: calc(var(--spacing) * 70);
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  background-color: var(--color-gray-100);
+@layer components {
+  .card-div {
+    display: block;
+    display: flex;
+    height: auto;
+    width: calc(var(--spacing) * 70);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+    background-color: var(--color-gray-100);
+  }
 }
 .card-link {
   width: 100%;
@@ -786,10 +788,79 @@
   display: flex;
   justify-content: center;
 }
+.auction-heading {
+  margin-inline: auto;
+  margin-block: calc(var(--spacing) * 8);
+  display: flex;
+  justify-content: center;
+  font-size: var(--text-2xl);
+  line-height: var(--tw-leading, var(--text-2xl--line-height));
+}
+.img-one {
+  height: calc(var(--spacing) * 100);
+  width: calc(var(--spacing) * 100);
+  object-fit: cover;
+}
+.auction-img-div {
+  margin-inline: calc(var(--spacing) * 8);
+  margin-block: calc(var(--spacing) * 4);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+}
 .img-two, .img-three, .img-four {
   height: calc(var(--spacing) * 30);
   width: calc(var(--spacing) * 30);
   object-fit: cover;
+}
+.row-img {
+  margin-left: calc(var(--spacing) * 4);
+  display: flex;
+  flex-direction: row;
+  gap: calc(var(--spacing) * 2);
+}
+.auction-content {
+  margin-inline: calc(var(--spacing) * 8);
+  display: flex;
+  flex-direction: row;
+  gap: calc(var(--spacing) * 24);
+  background-color: #F6F3EE;
+}
+.bid-btn {
+  margin-inline: auto;
+  margin-top: calc(var(--spacing) * 2);
+  border-radius: var(--radius-md);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  background-color: #957C62;
+  padding: calc(var(--spacing) * 1);
+  color: var(--color-white);
+}
+.input-bid {
+  margin-inline: auto;
+  border-radius: var(--radius-md);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  padding: calc(var(--spacing) * 1);
+  padding-left: calc(var(--spacing) * 2);
+}
+.bid-info {
+  margin-inline: calc(var(--spacing) * 4);
+  margin-top: calc(var(--spacing) * 8);
+}
+.auction-info {
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: calc(var(--spacing) * 2);
+}
+.bid-end {
+  margin-inline: calc(var(--spacing) * 4);
+  margin-top: calc(var(--spacing) * 4);
+  --tw-font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-bold);
 }
 @property --tw-border-style {
   syntax: "*";
