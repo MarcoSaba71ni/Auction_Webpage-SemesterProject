@@ -80,6 +80,14 @@
     @apply border p-2 mt-2 bg-[#957C62] text-white rounded-md 
 }
 
+.update-btn {
+    @apply border p-2 mt-2 bg-[#957C62] text-white rounded-md hidden
+}
+
+.profile-input {
+    @apply border border-black  pl-2 p-1 hidden
+}
+
 /*.interacted-auctions {
     @apply border mx-18 m-6 p-6 
 } */
@@ -143,3 +151,4 @@
 .bid-end {
     @apply font-bold mx-4 mt-4
 }
+

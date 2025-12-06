@@ -765,6 +765,24 @@
   padding: calc(var(--spacing) * 2);
   color: var(--color-white);
 }
+.update-btn {
+  margin-top: calc(var(--spacing) * 2);
+  display: none;
+  border-radius: var(--radius-md);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  background-color: #957C62;
+  padding: calc(var(--spacing) * 2);
+  color: var(--color-white);
+}
+.profile-input {
+  display: none;
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--color-black);
+  padding: calc(var(--spacing) * 1);
+  padding-left: calc(var(--spacing) * 2);
+}
 .interacted-auctions {
   margin: calc(var(--spacing) * 6);
   display: flex;

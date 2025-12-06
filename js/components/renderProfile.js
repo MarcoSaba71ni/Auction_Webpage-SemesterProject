@@ -46,7 +46,7 @@ export function renderProfilePage (profile) {
     const editDiv = document.createElement('div');
     const editBtn = document.createElement('button');
     editBtn.addEventListener("click", () => {
-        window.location.href = "edit.html"
+        window.location.href = `edit-profile.html?name=${name}`;
     })
     editBtn.classList.add('edit-btn');
     editBtn.textContent = 'Edit';
