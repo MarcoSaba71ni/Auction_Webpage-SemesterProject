@@ -59,6 +59,29 @@ export async function apiPost(endpoint, data) {
     return result;
 }
 
+export async function apiUpdate (endpoint, data) {
+    const token = localStorage.getItem("accessToken");
+    const options = {
+        headers : {
+            'Content-Type' : 'application/json',
+            "X-Noroff-API-Key": API_KEY,
+        },
+        method : "PUT",
+        body : JSON.stringify(data)
+    }
+    if (token) {
+        options.headers.Authorization = `Bearer ${token}`
+    } 
+    const response = await fetch(`${API_BASE}${endpoint}`, options);
+    const result = await response.json();
+    
+    if (!response.ok) {
+        console.error("API GET error:", data);
+        throw result;
+    }
+    return result;
+}
+
 export async function apiDelete () {
 
 }

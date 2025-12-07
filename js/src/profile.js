@@ -1,7 +1,7 @@
 import { renderProfilePage , userAuction, userBid} from "../components/renderProfile.js";
 import { profileFetch , auctionFetch , bidFetch } from "../api/profileFetch.js";
 import { getUser } from "../storage/local.js";
-
+import { updateProfile } from "../api/profileFetch.js";
 // Get the name in the url search parameter
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -91,6 +91,49 @@ function renderAvatar(user) {
 
     profileBannerImg.src = user.avatar?.url || '';
 }
+
+const editForm = document.getElementById('profile-update'); 
+
+editForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    editProfile();
+})
+
+function clean(value) {
+    return value.trim(); 
+}
+
+
+async function editProfile() {
+    const updatedValues = {
+        bio: clean(editForm.bio.value),
+        avatar: {
+            url: clean(editForm.avatarUrl.value),
+            alt: clean(editForm.avatarAlt.value),
+        },
+        banner: {
+            url: clean(editForm.bannerUrl.value),
+            alt: clean(editForm.bannerAlt.value),
+        }
+    };
+
+    try {
+        const response = await updateProfile( username ,updatedValues);
+
+        if (response.errors) {
+            alert("Error updating the profile");
+            return;
+        }
+
+        alert("Profile Updated!");
+        console.log(response.data);
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 
 
 fetchProfile();

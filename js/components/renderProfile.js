@@ -1,3 +1,5 @@
+
+
 export function renderProfilePage (profile) {
     const profileSection = document.getElementById('profile-section');
     profileSection.classList.add('profile-section');
@@ -45,11 +47,26 @@ export function renderProfilePage (profile) {
 
     const editDiv = document.createElement('div');
     const editBtn = document.createElement('button');
-    editBtn.addEventListener("click", () => {
-        window.location.href = `edit-profile.html?name=${name}`;
-    })
     editBtn.classList.add('edit-btn');
-    editBtn.textContent = 'Edit';
+    editBtn.textContent = 'Edit';    
+    const editForm = document.getElementById('edit-profile');
+
+    editBtn.addEventListener("click", () => {
+        editForm.classList.toggle("opacity-0");
+        editForm.classList.toggle("max-h-0");
+        editForm.classList.toggle("max-h-[2000px]"); // Smooth opening
+        editForm.classList.toggle("overflow-hidden");
+        editBtn.style.display = "none";
+
+            setTimeout(() => {
+                editForm.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+        });
+    }, 100); 
+    })
+
+
 
 
     profileSection.append(bannerDiv, infoDiv);

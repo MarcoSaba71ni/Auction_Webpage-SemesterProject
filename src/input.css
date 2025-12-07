@@ -48,7 +48,7 @@
 }
 
 .banner-div {
-    @apply w-full h-65 relative
+    @apply w-full h-65 relative object-cover
 }
 
 .profile-img {
