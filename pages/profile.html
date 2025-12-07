@@ -54,6 +54,36 @@
             <section class="profile-section" id="profile-section">
                 
             </section>
+            <section id="edit-profile" class="border bg-[#fff7f0] mx-95 rounded-md my-4 flex flex-col gap-3 
+                    opacity-0 max-h-0 overflow-hidden 
+                    transition-all duration-500 ease-out">
+                <h2 class="font-[Orbitron] flex  my-4 justify-center text-2xl">Update Profile</h2>
+                <form id="profile-update" class="flex flex-col gap-3">
+                    <div class="flex flex-row justify-center gap-5 flex-wrap ">
+                        <div class="col-1">
+                            <div class="flex flex-col gap-1">
+                                <label>Avatar</label>
+                                <input id="avatar-url-input"  name="avatarUrl" class="border bg-white pl-1" placeholder="avatar Url">
+                                <input id="avatar-alt-input" name="avatarAlt" class="border bg-white pl-1" placeholder="avatar Alt">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="flex flex-col">
+                                <label>Bio</label>
+                                <input id="bio-input" name="bio" class="border bg-white pl-1" placeholder="bio">
+                            </div>                    
+                            <div class="flex flex-col gap-1">
+                                <label>Banner</label>
+                                <input id="banner-url-input" name="bannerUrl" class="border bg-white pl-1" placeholder="banner Url">
+                                <input id="banner-alt-input" name="bannerAlt" class="border bg-white pl-1" placeholder="banner Alt">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <button id="update-btn" type="submit" class="mb-2 border p-2 mt-2 bg-[#957C62] text-white rounded-md ">Update</button>
+                    </div>
+                </form>
+            </section>
             <section class="border flex flex-col mx-18">
                 <h1 class="font-[Orbitron] text-3xl flex justify-center pt-12"> Auction List</h1>
                 <div id="interacted-auctions">
