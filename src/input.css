@@ -48,7 +48,7 @@
 }
 
 .banner-div {
-    @apply w-full h-65 relative
+    @apply w-full h-65 relative object-cover
 }
 
 .profile-img {
@@ -78,6 +78,14 @@
 
 .edit-btn {
     @apply border p-2 mt-2 bg-[#957C62] text-white rounded-md 
+}
+
+.update-btn {
+    @apply border p-2 mt-2 bg-[#957C62] text-white rounded-md hidden
+}
+
+.profile-input {
+    @apply border border-black  pl-2 p-1 hidden
 }
 
 /*.interacted-auctions {
