@@ -50,12 +50,36 @@ export function renderAuction (bid) {
     imgFour.alt = fourthImage?.alt || bid.title;
 
 
+    const profileAuction = document.createElement('div');
+    profileAuction.classList.add('profile-auction');
+    
+    const profileImgDiv = document.createElement('div');
+    const profileImgAuction = document.createElement('img');
+    profileImgAuction.classList.add('profile-img-auction');
+    profileImgAuction.src = bid.seller?.avatar?.url;
+    profileImgAuction.alt = bid.seller?.avatar?.alt;
+
+    const profileInfoDiv = document.createElement('div');
+
+    const profileName = document.createElement('h3');
+    profileName.textContent = bid.seller.name;
+
+    const profileEmail = document.createElement('h3');
+    profileEmail.textContent = bid.seller.email;
+    console.log(profileEmail);
+
+
     const bidBtn = document.createElement('button');
     bidBtn.classList.add('bid-btn');
     bidBtn.textContent = "Place your bid";
 
+    bidBtn.addEventListener("click", () => {
+        bidInput.style.display = 'block';
+    })
+
     const bidInput = document.createElement('input');
     bidInput.classList.add('input-bid');
+    bidInput.placeholder = "place your bid here";
 
     const bidInfo = document.createElement('div');
     bidInfo.classList.add('bid-info');
@@ -67,7 +91,13 @@ export function renderAuction (bid) {
 
     const countDiv = document.createElement('div');
     const bidCount = document.createElement('h3');
-    bidCount.textContent = bid?._count.bids[0];
+    bidCount.classList.add('bid-count');
+    bidCount.textContent = `Bids: ${bid._count.bids}`;
+    console.log(bidCount);
+
+    const bidContainer = document.createElement('div');
+    
+    const bidder = document.createElement('h3');
 
 
 
@@ -81,8 +111,14 @@ export function renderAuction (bid) {
 
     countDiv.appendChild(bidCount);
 
-    auctionInfo.append(bidBtn, bidInput , bidInfo, bidEnd, countDiv);
+    auctionInfo.append(profileAuction, bidBtn, bidInput , bidInfo, bidEnd, countDiv, bidContainer);
 
+    profileAuction.append(profileImgDiv, profileInfoDiv);
 
+    profileImgDiv.appendChild(profileImgAuction);
+
+    profileInfoDiv.append(profileName, profileEmail);
+
+    bidContainer.appendChild(bidder);
 }
 

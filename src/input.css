@@ -125,11 +125,11 @@
 }
 
 .bid-btn {
-     @apply border p-1 mt-2 bg-[#957C62] text-white rounded-md mx-auto
+     @apply border p-1 cursor-pointer mt-2 bg-[#957C62] text-white rounded-md mx-auto hover:bg-[#957C62] 
 }
 
 .input-bid {
-    @apply border mx-auto p-1 rounded-md pl-2 
+    @apply border mx-auto p-1 rounded-md pl-2 hidden
 }
 
 .bid-info {
@@ -142,4 +142,16 @@
 
 .bid-end {
     @apply font-bold mx-4 mt-4
+}
+
+.bid-count {
+    @apply mx-4 mt-8
+}
+
+.profile-auction {
+    @apply flex flex-row gap-2 items-center mt-2
+}
+
+.profile-img-auction {
+    @apply w-20 h-20 object-cover rounded-full
 }
