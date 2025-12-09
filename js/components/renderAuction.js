@@ -1,3 +1,5 @@
+import { apiPost } from "../api/api.js";
+import { postBid } from "../api/auctionFetch.js";
 
 export function renderAuction (bid) {
     const auctionWrapper = document.getElementById('auction-wrapper');
@@ -75,11 +77,38 @@ export function renderAuction (bid) {
 
     bidBtn.addEventListener("click", () => {
         bidInput.style.display = 'block';
-    })
+        submitBtn.style.display = 'block';
+    });
+
+
 
     const bidInput = document.createElement('input');
+    bidInput.type = "number";
+    bidInput.id = 'bid-input';
     bidInput.classList.add('input-bid');
     bidInput.placeholder = "place your bid here";
+    const submitBtn = document.createElement('button');
+    submitBtn.id = 'submit-btn';
+    submitBtn.textContent = "Submit";
+    submitBtn.classList.add('bid-btn', 'hidden');
+
+
+    submitBtn.addEventListener("click", async (e)=> {
+        e.preventDefault();
+
+        const amount = Number(bidInput.value.trim());
+        if (!amount || amount < 1) return alert("Invalid bid");
+
+        try {
+            const response = await postBid(bid.id, amount);
+            const data = response.data;
+            console.log("Bid placed:", data);
+            location.reload();
+        } catch (error) {
+            console.log(error);
+            alert("Bid could not be placed");
+        }
+    })
 
     const bidInfo = document.createElement('div');
     bidInfo.classList.add('bid-info');
@@ -95,10 +124,29 @@ export function renderAuction (bid) {
     bidCount.textContent = `Bids: ${bid._count.bids}`;
     console.log(bidCount);
 
-    const bidContainer = document.createElement('div');
-    
-    const bidder = document.createElement('h3');
+    const bidWrapper = document.createElement('div');
+    bidWrapper.classList.add('bid-wrapper');
 
+    const bidCard = bid.bids;
+
+    bidCard.forEach( singleBid => {
+        const bidContainer = document.createElement('div');
+        bidContainer.classList.add('bid-container');
+
+        const bidder = document.createElement('h3');
+        bidder.textContent = singleBid.bidder.name;
+
+        const amount = document.createElement('h3');
+        amount.textContent = singleBid.amount;
+        
+
+        const createdBid = document.createElement('p');
+        createdBid.textContent = `Date: ${new Date(singleBid.created).toLocaleDateString()}`;
+    
+        bidContainer.append(bidder, amount, createdBid);
+        bidWrapper.appendChild(bidContainer);
+    });
+    
 
 
 
@@ -111,14 +159,14 @@ export function renderAuction (bid) {
 
     countDiv.appendChild(bidCount);
 
-    auctionInfo.append(profileAuction, bidBtn, bidInput , bidInfo, bidEnd, countDiv, bidContainer);
-
+    auctionInfo.append(profileAuction, bidInfo, bidEnd, countDiv, bidWrapper, bidBtn, bidInput, submitBtn);
+    
     profileAuction.append(profileImgDiv, profileInfoDiv);
 
     profileImgDiv.appendChild(profileImgAuction);
 
     profileInfoDiv.append(profileName, profileEmail);
 
-    bidContainer.appendChild(bidder);
+
 }
 

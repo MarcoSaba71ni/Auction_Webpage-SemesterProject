@@ -955,6 +955,22 @@
   border-radius: calc(infinity * 1px);
   object-fit: cover;
 }
+.bid-wrapper {
+  margin-inline: auto;
+  margin-top: calc(var(--spacing) * 8);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: calc(var(--spacing) * 2);
+}
+.bid-container {
+  display: flex;
+  flex-direction: column;
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  padding: calc(var(--spacing) * 1);
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;

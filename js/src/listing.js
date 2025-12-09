@@ -33,6 +33,7 @@ async function listFeed() {
     const data = response.data;
 
     data.forEach(auction => {
+        console.log("AUCTION:", auction);
         renderFeed(auction);
         console.log(auction)
     });

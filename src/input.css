@@ -163,3 +163,11 @@
 .profile-img-auction {
     @apply w-20 h-20 object-cover rounded-full
 }
+
+.bid-wrapper {
+    @apply flex flex-row gap-2 mx-auto mt-8 justify-center flex-wrap
+}
+
+.bid-container {
+    @apply flex flex-col border p-1 
+}

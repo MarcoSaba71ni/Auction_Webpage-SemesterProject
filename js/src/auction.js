@@ -1,4 +1,4 @@
-import { fetchAuction } from "../api/auctionFetch.js";
+import { fetchAuction , postBid } from "../api/auctionFetch.js";
 import { renderAuction } from "../components/renderAuction.js"; 
 import { getUser } from "../storage/local.js";
 
@@ -49,5 +49,7 @@ async function auctionRendering () {
         console.log(error);
     }
 };
+
+
 
 auctionRendering();
