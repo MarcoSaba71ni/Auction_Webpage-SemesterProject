@@ -949,6 +949,10 @@
   align-items: center;
   gap: calc(var(--spacing) * 2);
 }
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+}
 .profile-img-auction {
   height: calc(var(--spacing) * 20);
   width: calc(var(--spacing) * 20);

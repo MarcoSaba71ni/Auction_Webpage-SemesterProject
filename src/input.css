@@ -160,6 +160,10 @@
     @apply flex flex-row gap-2 items-center mt-2
 }
 
+.profile-wrapper {
+    @apply flex flex-col
+}
+
 .profile-img-auction {
     @apply w-20 h-20 object-cover rounded-full
 }

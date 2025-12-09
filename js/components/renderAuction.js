@@ -51,9 +51,13 @@ export function renderAuction (bid) {
     imgFour.src = fourthImage?.url || "../images/placeholder.jpg";
     imgFour.alt = fourthImage?.alt || bid.title;
 
+    const profileWrapper = document.createElement('a');
 
+
+    profileWrapper.href = 'profile.html?id=${bid.seller.name}';
+    
     const profileAuction = document.createElement('div');
-    profileAuction.classList.add('profile-auction');
+    profileWrapper.href = `profile.html?name=${bid.seller.name}`;
     
     const profileImgDiv = document.createElement('div');
     const profileImgAuction = document.createElement('img');
@@ -131,13 +135,13 @@ export function renderAuction (bid) {
 
     bidCard.forEach( singleBid => {
         const bidContainer = document.createElement('div');
-        bidContainer.classList.add('bid-container');
+        bidContainer.classList.add('bid-container', 'bg-white');
 
         const bidder = document.createElement('h3');
         bidder.textContent = singleBid.bidder.name;
 
         const amount = document.createElement('h3');
-        amount.textContent = singleBid.amount;
+        amount.textContent = `Amount: ${singleBid.amount}`;
         
 
         const createdBid = document.createElement('p');
@@ -159,8 +163,10 @@ export function renderAuction (bid) {
 
     countDiv.appendChild(bidCount);
 
-    auctionInfo.append(profileAuction, bidInfo, bidEnd, countDiv, bidWrapper, bidBtn, bidInput, submitBtn);
+    auctionInfo.append(profileWrapper, bidInfo, bidEnd, countDiv, bidWrapper, bidBtn, bidInput, submitBtn);
     
+    profileWrapper.appendChild(profileAuction);
+
     profileAuction.append(profileImgDiv, profileInfoDiv);
 
     profileImgDiv.appendChild(profileImgAuction);
