@@ -30,9 +30,9 @@ async function listFeed() {
     const auctionUrl = '/auction/listings?_active=true&_sort=created&sortOrder=desc';
     const response = await apiGet(`${auctionUrl}`);
     console.log("RAW API RESPONSE:", response);
-    const data = response.data;
+    const allListings = response.data;
 
-    data.forEach(auction => {
+    allListings.forEach(auction => {
         console.log("AUCTION:", auction);
         renderFeed(auction);
         console.log(auction)
