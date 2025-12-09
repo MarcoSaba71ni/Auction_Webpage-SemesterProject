@@ -39,3 +39,6 @@ function renderAvatar(user) {
 
     profileBannerImg.src = user.avatar?.url || '';
 }
+
+
+
