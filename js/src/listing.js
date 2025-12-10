@@ -1,17 +1,20 @@
 import { renderFeed } from "../components/renderList.js";
 import { apiGet } from "../api/api.js";
 import { getUser , deleteUser } from "../storage/local.js";
+import { searchSetUp } from "../components/searchBar.js";
+
+
 
 document.addEventListener("DOMContentLoaded", ()=> {
     const user = getUser();
 
     const elementsToToggle = [
-        {id: 'sign-in_text', showIf: !user},
+        { id: 'sign-in_text', showIf: !user},
         { id: 'login-link', showIf: !user},
         { id: 'create-link', showIf: !!user},
-        {id : 'profile-div', showIf: !!user },
-        {id: 'logout-btn', showIf: !!user},
-        {id: 'login-btn', showIf: !user},
+        { id : 'profile-div', showIf: !!user },
+        { id: 'logout-btn', showIf: !!user},
+        { id: 'login-btn', showIf: !user},
     ];
 
     elementsToToggle.forEach(({id, showIf}) =>  {
@@ -27,16 +30,16 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
 
 async function listFeed() {
+    const user = getUser();
     const auctionUrl = '/auction/listings?_active=true&_sort=created&sortOrder=desc';
     const response = await apiGet(`${auctionUrl}`);
-    console.log("RAW API RESPONSE:", response);
     const allListings = response.data;
 
     allListings.forEach(auction => {
-        console.log("AUCTION:", auction);
         renderFeed(auction);
-        console.log(auction)
     });
+
+    searchSetUp(allListings, renderFeed)
 }
 
 listFeed();
@@ -59,11 +62,13 @@ loginLink.addEventListener("click", async ()=> {
     alert("You are being redirected to the Sign In page")
 })
 
-function renderAvatar(user) {
+function renderAvatar() {
+    const user = getUser();
+    if(!user) return;
     const profilePath = document.getElementById('profile-path');
     const profileBannerImg = document.getElementById('profile-banner-img');
 
-    profilePath.href = `profile.html?name=${user.name}`;
+    profilePath.href = `../pages/profile.html?name=${user.name}`;
 
-    profileBannerImg.src = user.avatar?.url;
+    profileBannerImg.src = user.avatar?.url || '';
 }

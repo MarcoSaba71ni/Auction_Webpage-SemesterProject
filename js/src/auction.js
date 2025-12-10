@@ -1,6 +1,7 @@
 import { fetchAuction , postBid } from "../api/auctionFetch.js";
 import { renderAuction } from "../components/renderAuction.js"; 
 import { getUser } from "../storage/local.js";
+import { searchSetUp } from "../components/searchBar.js";
 
 
 document.addEventListener("DOMContentLoaded", ()=> {

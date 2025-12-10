@@ -11,8 +11,8 @@ export function renderFeed(auction) {
     const imgDiv = document.createElement('div');
     const auctionImg = document.createElement('img');
     auctionImg.classList.add('auction-img');
-    auctionImg.src = auction.media?.[0]?.url;
-    auctionImg.alt = auction.media?.[0]?.alt;
+    auctionImg.src = auction?.media?.[0]?.url;
+    auctionImg.alt = auction?.media?.[0]?.alt;
 
     const cardBody = document.createElement('div');
 
@@ -25,7 +25,7 @@ export function renderFeed(auction) {
     bidNumber.classList.add('bid-number');
 
     const bidDeadline = document.createElement('h3');
-    bidDeadline.textContent = `Bids: ${auction._count.bids}`;
+    bidDeadline.textContent = `Bids: ${auction._count?.bids}`;
     bidDeadline.classList.add('bid-deadline');
 
     const btnDiv = document.createElement('div');

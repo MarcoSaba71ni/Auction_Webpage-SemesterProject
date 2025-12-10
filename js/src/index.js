@@ -1,5 +1,6 @@
 import { getUser , deleteUser } from "../storage/local.js";
 
+
 document.addEventListener("DOMContentLoaded", () => {
     const user = getUser();
 
