@@ -243,11 +243,11 @@
   .mx-8 {
     margin-inline: calc(var(--spacing) * 8);
   }
+  .mx-12 {
+    margin-inline: calc(var(--spacing) * 12);
+  }
   .mx-18 {
     margin-inline: calc(var(--spacing) * 18);
-  }
-  .mx-95 {
-    margin-inline: calc(var(--spacing) * 95);
   }
   .mx-auto {
     margin-inline: auto;
@@ -591,10 +591,6 @@
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
-  .text-4xl {
-    font-size: var(--text-4xl);
-    line-height: var(--tw-leading, var(--text-4xl--line-height));
-  }
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
@@ -714,6 +710,16 @@
       outline-style: none;
     }
   }
+  .sm\:mx-18 {
+    @media (width >= 40rem) {
+      margin-inline: calc(var(--spacing) * 18);
+    }
+  }
+  .sm\:mx-auto {
+    @media (width >= 40rem) {
+      margin-inline: auto;
+    }
+  }
   .sm\:block {
     @media (width >= 40rem) {
       display: block;
@@ -739,10 +745,21 @@
       flex-direction: row;
     }
   }
+  .sm\:pr-4 {
+    @media (width >= 40rem) {
+      padding-right: calc(var(--spacing) * 4);
+    }
+  }
   .sm\:text-2xl {
     @media (width >= 40rem) {
       font-size: var(--text-2xl);
       line-height: var(--tw-leading, var(--text-2xl--line-height));
+    }
+  }
+  .sm\:text-4xl {
+    @media (width >= 40rem) {
+      font-size: var(--text-4xl);
+      line-height: var(--tw-leading, var(--text-4xl--line-height));
     }
   }
   .sm\:text-5xl {
@@ -772,9 +789,12 @@
   width: 100%;
 }
 .auction-img {
-  height: calc(var(--spacing) * 60);
+  height: calc(var(--spacing) * 30);
   width: 100%;
   object-fit: cover;
+  @media (width >= 40rem) {
+    height: calc(var(--spacing) * 60);
+  }
 }
 .card-div {
   display: flex;
@@ -782,13 +802,15 @@
   gap: calc(var(--spacing) * 2);
 }
 .card-body {
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--spacing) * 6);
+  margin-left: calc(var(--spacing) * 2);
 }
 .auction-title {
-  font-size: var(--text-2xl);
-  line-height: var(--tw-leading, var(--text-2xl--line-height));
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  @media (width >= 40rem) {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
 }
 .bid-number {
   font-size: var(--text-sm);
@@ -813,36 +835,59 @@
   color: var(--color-white);
 }
 .profile-section {
-  margin-inline: calc(var(--spacing) * 18);
+  margin-inline: calc(var(--spacing) * 8);
   margin-bottom: calc(var(--spacing) * 6);
   border-style: var(--tw-border-style);
   border-width: 1px;
   padding-block: calc(var(--spacing) * 4);
   padding-top: calc(var(--spacing) * 8);
+  @media (width >= 40rem) {
+    margin-inline: calc(var(--spacing) * 18);
+  }
 }
 .banner-div {
-  position: relative;
-  height: calc(var(--spacing) * 65);
+  height: calc(var(--spacing) * 35);
   width: 100%;
   object-fit: cover;
+  @media (width >= 40rem) {
+    position: relative;
+  }
+  @media (width >= 40rem) {
+    height: calc(var(--spacing) * 65);
+  }
 }
 .profile-img {
-  position: absolute;
-  top: 65%;
-  left: calc(var(--spacing) * 30);
-  height: calc(var(--spacing) * 50);
-  width: calc(var(--spacing) * 50);
+  height: calc(var(--spacing) * 35);
+  width: calc(var(--spacing) * 35);
   border-radius: calc(infinity * 1px);
+  object-fit: cover;
+  @media (width >= 40rem) {
+    position: absolute;
+  }
+  @media (width >= 40rem) {
+    top: 65%;
+  }
+  @media (width >= 40rem) {
+    left: calc(var(--spacing) * 30);
+  }
+  @media (width >= 40rem) {
+    width: calc(var(--spacing) * 50);
+  }
+  @media (width >= 40rem) {
+    border-radius: calc(infinity * 1px);
+  }
 }
 .info-div {
   margin-inline: auto;
   margin-top: calc(var(--spacing) * 4);
   margin-bottom: calc(var(--spacing) * 12);
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: calc(var(--spacing) * 12);
+  @media (width >= 40rem) {
+    flex-direction: row;
+  }
 }
 .text-div {
   margin-right: calc(var(--spacing) * 12);
@@ -862,6 +907,7 @@
 .info-btn-div {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
   gap: calc(var(--spacing) * 6);
 }
@@ -924,23 +970,51 @@
   line-height: var(--tw-leading, var(--text-2xl--line-height));
 }
 .img-one {
-  height: calc(var(--spacing) * 100);
-  width: calc(var(--spacing) * 100);
+  display: none;
   object-fit: cover;
+  @media (width >= 40rem) {
+    height: calc(var(--spacing) * 100);
+  }
+  @media (width >= 40rem) {
+    width: calc(var(--spacing) * 100);
+  }
+  @media (width >= 48rem) {
+    display: block;
+  }
 }
 .auction-img-div {
   margin-inline: calc(var(--spacing) * 8);
   margin-block: calc(var(--spacing) * 4);
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: calc(var(--spacing) * 2);
 }
 .img-two, .img-three, .img-four {
-  height: calc(var(--spacing) * 30);
-  width: calc(var(--spacing) * 30);
+  display: flex;
   object-fit: cover;
+  @media (width >= 40rem) {
+    height: calc(var(--spacing) * 30);
+  }
+  @media (width >= 40rem) {
+    width: calc(var(--spacing) * 30);
+  }
+}
+.img-two {
+  height: calc(var(--spacing) * 60);
+  width: calc(var(--spacing) * 60);
+  @media (width >= 48rem) {
+    display: none;
+  }
+}
+.img-three, .img-four {
+  display: none;
+  @media (width >= 48rem) {
+    display: block;
+  }
 }
 .row-img {
+  margin-inline: auto;
   margin-left: calc(var(--spacing) * 4);
   display: flex;
   flex-direction: row;
@@ -949,9 +1023,12 @@
 .auction-content {
   margin-inline: calc(var(--spacing) * 8);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: calc(var(--spacing) * 24);
   background-color: #F6F3EE;
+  @media (width >= 48rem) {
+    flex-direction: row;
+  }
 }
 .bid-btn {
   margin-inline: auto;
@@ -983,12 +1060,17 @@
   margin-top: calc(var(--spacing) * 8);
 }
 .auction-info {
-  margin-inline: auto;
+  margin-left: calc(var(--spacing) * 4);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: calc(var(--spacing) * 2);
+  @media (width >= 40rem) {
+    margin-inline: auto;
+  }
+  @media (width >= 40rem) {
+    gap: calc(var(--spacing) * 2);
+  }
 }
 .bid-end {
   margin-inline: calc(var(--spacing) * 4);
@@ -1009,7 +1091,8 @@
 }
 .profile-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: calc(var(--spacing) * 2);
 }
 .profile-img-auction {
   height: calc(var(--spacing) * 20);
@@ -1032,6 +1115,8 @@
   border-style: var(--tw-border-style);
   border-width: 1px;
   padding: calc(var(--spacing) * 1);
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
 }
 @property --tw-border-style {
   syntax: "*";
