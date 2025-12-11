@@ -51,7 +51,7 @@
 }
 
 .profile-img {
-    @apply w-35 h-35 rounded-full sm:rounded-full object-cover sm:absolute  sm:w-50 sm:w-50 sm:left-30 sm:top-[65%]; 
+    @apply w-35 h-35 rounded-full rounded-full sm:rounded-full object-cover top-[65%] sm:absolute  sm:w-50 sm:h-50 sm:left-30 sm:top-[65%]; 
     /* on mobile it will stay static (default), absolute only on sm+ */
 }
 

@@ -12,11 +12,13 @@ document.addEventListener("DOMContentLoaded", ()=> {
         {id : 'profile-div', showIf: !!user },
         {id: 'logout-btn', showIf: !!user},
         {id: 'login-btn', showIf: !user},
+        {id:'logged-in-icon', showIf: !!user},
+        {id:'logged-out-icon', showIf: !user}
     ];
 
     elementsToToggle.forEach(({id, showIf}) =>  {
         const element = document.getElementById(id);
-        element.style.display = showIf? "block" : "none";
+        element.style.display = showIf? "flex" : "none";
     })
 
     if (user) {
@@ -60,10 +62,13 @@ loginLink.addEventListener("click", async ()=> {
 })
 
 function renderAvatar(user) {
-    const profilePath = document.getElementById('profile-path');
-    const profileBannerImg = document.getElementById('profile-banner-img');
 
-    profilePath.href = `profile.html?name=${user.name}`;
+    const loggedInIcon = document.getElementById('logged-in-icon');
+    const loggedOutIcon = document.getElementById('logged-out-icon');
 
-    profileBannerImg.src = user.avatar?.url;
+
+   loggedOutIcon.href = `login.html`;
+   loggedInIcon.href = `profile.html?name=${user.name}`;
+
+
 }

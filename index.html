@@ -33,10 +33,9 @@
                         <button type="button" class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">Search</button>
                     </div>
                 </form>
-                <div id="profile-div" style="display: none;" class="flex ml-auto gap-8 hidden sm:block">
-                    <a id="profile-path">
-                        <img id="profile-banner-img" class="w-10 h-10 rounded-md object-cover">
-                    </a>
+                <div id="profile-div" class="flex ml-auto gap-8">
+                        <a id="logged-in-icon" style="display: none;"><i class="fa-solid fa-user text-3xl cursor-pointer"></i></a>
+                        <a id="logged-out-icon" ><i class="fa-regular fa-user text-3xl cursor-pointer"></i></a>
                 </div>
                 <div class="hidden sm:block">
                     <button id="logout-btn" class="p-2 bg-red-700 text-white border rounded-md  cursor-pointer" style="display: none;">Logout</button>
@@ -61,7 +60,7 @@
         <nav id="dropdown-menu" class="block sm:hidden  border bg-[#fff7f0] block absolute w-25 right-0 top-18">
             <ul class="flex flex-col gap-1 pl-3 text-md font-[Playfair]">
                 <li class="cursor-pointer  hover:bg-[#9c6a6a] transition"><a href="index.html">Home</a></li>
-                <li class="cursor-pointer   hover:bg-[#9c6a6a] transition"><a href="about.html">About Us</a></li>
+                <li class="cursor-pointer   hover:bg-[#9c6a6a] transition"><a href="index.html">About Us</a></li>
                 <li class="cursor-pointer  hover:bg-[#9c6a6a] transition"><a href="pages/listing.html">Auction</a></li>
             </ul>
         </nav>

@@ -9,7 +9,7 @@ burguerBtn.addEventListener("click", (e) => {
 
 document.addEventListener("click", (e)=>{
     const clickedInsideMenu = dropDown.contains(e.target);
-    const clickedButton = burgerBtn.contains(e.target);
+    const clickedButton = burguerBtn.contains(e.target);
 
     if (!clickedInsideMenu && !clickedButton) {
         dropDown.classList.add("hidden");
