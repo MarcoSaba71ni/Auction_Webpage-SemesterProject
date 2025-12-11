@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
         {id : 'profile-div', showIf: !!user },
         {id: 'logout-btn', showIf: !!user},
         {id: 'login-btn', showIf: !user},
+        {id:'logged-in-icon', showIf: !!user},
+        {id:'logged-out-icon', showIf: !user}
     ];
 
     elementsToToggle.forEach(({id, showIf}) =>  {
@@ -24,15 +26,6 @@ document.addEventListener("DOMContentLoaded", ()=> {
         renderAvatar(user);
     }
 });
-
-function renderAvatar(user) {
-    const profilePath = document.getElementById('profile-path');
-    const profileBannerImg = document.getElementById('profile-banner-img');
-
-    profilePath.href = `/pages/profile.html?name=${user.name}`;
-
-    profileBannerImg.src = user.avatar?.url || '';
-}
 
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -50,6 +43,16 @@ async function auctionRendering () {
     }
 };
 
+function renderAvatar(user) {
 
+    const loggedInIcon = document.getElementById('logged-in-icon');
+    const loggedOutIcon = document.getElementById('logged-out-icon');
+
+
+    loggedOutIcon.href = `login.html`;
+    loggedInIcon.href = `profile.html?name=${user.name}`;
+
+
+}
 
 auctionRendering();

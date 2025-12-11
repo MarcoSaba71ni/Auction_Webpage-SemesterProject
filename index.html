@@ -8,16 +8,22 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
         <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Khmer&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
         <title>Main Page || Libertini</title>
     </head>
     <body>
-        <header class="flex flex-row justify-center gap-6 border p-4">
-            <div class="pr-4">
+        <header class="flex flex-row justify-center gap-6 border p-4 relative">
+
+            <div class="pt-2 sm:pr-4">
                 <a href="index.html"><img src="images/Libertini logo-copy.png" class="w-[150px] h-[150] object-cover" ></a>
             </div>
             <div class="flex flex-row items-center  gap-12">
-                <a href="pages/listing.html"><h2 class="text-3xl font-[Playfair]">Auction</h2></a>
-                <form class="max-w-md mx-auto">   
+                <a href="pages/listing.html"><h2 class="text-3xl font-[Playfair] hidden sm:block">Auction</h2></a>
+                <form class="max-w-md mx-auto hidden sm:block">   
                     <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -27,27 +33,38 @@
                         <button type="button" class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">Search</button>
                     </div>
                 </form>
-                <div id="profile-div" style="display: none;" class="flex ml-auto gap-8">
-                    <a id="profile-path">
-                        <img id="profile-banner-img" class="w-10 h-10 rounded-md object-cover">
-                    </a>
+                <div id="profile-div" class="flex ml-auto gap-8">
+                        <a id="logged-in-icon" style="display: none;"><i class="fa-solid fa-user text-3xl cursor-pointer"></i></a>
+                        <a id="logged-out-icon" ><i class="fa-regular fa-user text-3xl cursor-pointer"></i></a>
                 </div>
-                <div>
+                <div class="hidden sm:block">
                     <button id="logout-btn" class="p-2 bg-red-700 text-white border rounded-md  cursor-pointer" style="display: none;">Logout</button>
                 </div>
-                <div>
-                    <a href="pages/login.html" id="login-btn" class="p-2 bg-green-700 text-white text-black border rounded md cursor-pointer">Sign In</a>
+                <div class="hidden sm:block">
+                    <a href="pages/login.html" id="login-btn" class="p-2 bg-green-700 text-white text-black border rounded md cursor-pointer hidden sm:block">Sign In</a>
+                </div>
+                <div class="block p-1 rounded-sm cursor-pointer hover:border  sm:hidden">
+                    <button class="cursor-pointer" id="burguer-btn">
+                        <i class="fa-solid fa-bars text-3xl hover:"></i>
+                    </button>
                 </div>
             </div>
         </header>
-       <nav class="border py-3 bg-[#fff7f0]">
+       <nav class="border py-3 bg-[#fff7f0] hidden sm:block">
             <ul class="flex justify-center gap-8 text-xl font-[Playfair]">
                 <a href="index.html"></a><li class="cursor-pointer">Home</li>
                 <a href="index.html"></a><li class="cursor-pointer">About Us</li>
                 <a href="pages/listing.html"><li class="cursor-pointer">Auction</li></a>
             </ul>
         </nav>
-        <main>            
+        <nav id="dropdown-menu" class="block sm:hidden  border bg-[#fff7f0] block absolute w-25 right-0 top-18">
+            <ul class="flex flex-col gap-1 pl-3 text-md font-[Playfair]">
+                <li class="cursor-pointer  hover:bg-[#9c6a6a] transition"><a href="index.html">Home</a></li>
+                <li class="cursor-pointer   hover:bg-[#9c6a6a] transition"><a href="index.html">About Us</a></li>
+                <li class="cursor-pointer  hover:bg-[#9c6a6a] transition"><a href="pages/listing.html">Auction</a></li>
+            </ul>
+        </nav>
+        <main>
             <section id="register_login-div" class=" flex justify-center text-center my-15">
                 <h2 class="text-xl">
                     <a href="pages/register.html" class="text-blue-500 hover:text-blue-700">Register</a> /
@@ -55,16 +72,16 @@
                     to place bids and get exclusive deals.
                 </h2>
             </section>
-            <section class="flex h-screen">
-                <div class="w-1/2">
+            <section class="flex flex-col pb-6 mb-6  sm:flex-row h-screen ">
+                <div class="w-full sm:w-1/2">
                     <img src="images/abrigue-o-leilão-martelo-do-símbolo-da-autoridade-e-casa-diminuta-conceito-sala-tribunal-112615384.webp" class="w-full h-full object-cover">
                 </div>
 
-                <div class="w-1/2 flex flex-col justify-center items-center text-center px-16 bg-[#fff7f0]">
-                    <h1 class="text-5xl font-[Playfair] mb-6">Place your Bid</h1>
-                    <h3 class="text-2xl mb-8 font-[Playfair]">We get exclusive new bids everyday</h3>
+                <div class="w-full pt-2 sm:w-1/2 flex flex-col justify-center items-center text-center px-16 bg-[#fff7f0]">
+                    <h1 class="text-3xl font-[Playfair] mb-6 sm:text-5xl">Place your Bid</h1>
+                    <h3 class="text-xl sm:text-2xl mb-8 font-[Playfair]">We get exclusive new bids everyday</h3>
                     <a href="pages/listing.html"
-                    class="bg-[#432323] text-white text-2xl px-8 py-3 rounded hover:bg-[#9c6a6a] transition">
+                    class="bg-[#432323] text-white text-md px-1 py-1 sm:text-2xl px-8 py-3 rounded hover:bg-[#9c6a6a] transition">
                         Auctions
                     </a>
                 </div>
@@ -72,11 +89,11 @@
 
             <section class="flex bg-[url('/images/old-bidding.jpg')] bg-cover bg-center flex-row flex-wrap justify-between h-130 my-10">
                 <div class="w-1/2 flex flex-col justify-center mx-auto items-center text-center ">
-                    <h2 class="text-5xl text-white font-[Playfair] mb-4">About Us</h2>
-                    <h3 class="text-2xl text-white mx-8 mb-6  items-start">
+                    <h2 class="text-3xl text-white font-[Playfair] mb-6 sm:text-5xl">About Us</h2>
+                    <h3 class="text-xl text-white mx-8 mb-6  items-start sm:text-2xl">
                         We are responsible for auctions in 27 different countries, mainly in Scandinavia.
                     </h3>
-                    <a href="#" class="bg-[#432323] text-white text-xl px-4 py-2 rounded-lg hover:bg-[#9c6a6a] transition">
+                    <a href="#" class="bg-[#432323] text-white text-md px-1 py-1 sm:text-2xl px-8 py-3 rounded hover:bg-[#9c6a6a] transition">
                         Discover More
                     </a>
                 </div>
@@ -94,9 +111,10 @@
                 </ul>
             </div>
             <div class="mx-auto">
-                <img src="images/Libertini logo-copy.png" class="w-100 h-auto object-cover">
+                <img src="images/Libertini logo-copy.png" class="w-50 object-cover sm:w-100 h-auto">
             </div>
         </footer>
         <script type="module" src="js/src/index.js"></script>
+        <script type="module" src="js/components/burguer-btn.js"></script>
     </body>
 </html>

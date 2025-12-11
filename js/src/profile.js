@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
         { id : 'profile-div', showIf: !!user },
         { id: 'logout-btn', showIf: !!user },
         { id: 'login-btn', showIf: !user },
-        { id: 'register_login-div', showIf: !user }
+        { id: 'register_login-div', showIf: !user },
+        {id:'logged-in-icon', showIf: !!user},
+        {id:'logged-out-icon', showIf: !user}
     ];
     
     elementsToToggle.forEach(({id, showIf}) => {
@@ -83,14 +85,6 @@ async function fetchBid () {
     }
 }
 
-function renderAvatar(user) {
-    const profilePath = document.getElementById('profile-path');
-    const profileBannerImg = document.getElementById('profile-banner-img');
-
-    profilePath.href = `/pages/profile.html?name=${user.name}`;
-
-    profileBannerImg.src = user.avatar?.url || '';
-}
 
 const editForm = document.getElementById('profile-update'); 
 
@@ -133,6 +127,17 @@ async function editProfile() {
     }
 }
 
+function renderAvatar(user) {
+
+    const loggedInIcon = document.getElementById('logged-in-icon');
+    const loggedOutIcon = document.getElementById('logged-out-icon');
+
+
+    loggedOutIcon.href = `login.html`;
+    loggedInIcon.href = `profile.html?name=${user.name}`;
+
+
+}
 
 
 
