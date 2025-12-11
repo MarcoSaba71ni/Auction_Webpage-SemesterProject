@@ -57,7 +57,9 @@ export function renderAuction (bid) {
     profileWrapper.href = 'profile.html?id=${bid.seller.name}';
     
     const profileAuction = document.createElement('div');
+
     profileWrapper.href = `profile.html?name=${bid.seller.name}`;
+    profileAuction.classList.add('profile-wrapper');
     
     const profileImgDiv = document.createElement('div');
     const profileImgAuction = document.createElement('img');

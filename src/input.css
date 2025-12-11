@@ -13,7 +13,7 @@
 }
 
 .auction-img {
-    @apply w-full h-60 object-cover;
+    @apply w-full h-30 sm:h-60 object-cover  ;
 }
 
 .card-div {
@@ -21,11 +21,11 @@
 }
 
 .card-body {
-    @apply flex flex-col gap-6;
+    @apply ml-2;
 }
 
 .auction-title {
-    @apply text-2xl;
+    @apply text-sm sm:text-2xl;
 }
 
 .bid-number {
@@ -42,25 +42,25 @@
 
 
 /* PROFILE PAGE */
-
 .profile-section {
-    @apply mx-18 border pt-8 py-4 mb-6
+    @apply mx-8 sm:mx-18 border pt-8 py-4 mb-6;
 }
 
 .banner-div {
-    @apply w-full h-65 relative object-cover
+    @apply w-full h-35 object-cover sm:relative sm:h-65 ; /* relative only on sm+ screens */
 }
 
 .profile-img {
-    @apply w-50 h-50 rounded-full absolute left-30 top-[65%]
+    @apply w-35 h-35 rounded-full rounded-full sm:rounded-full object-cover top-[65%] sm:absolute  sm:w-50 sm:h-50 sm:left-30 sm:top-[65%]; 
+    /* on mobile it will stay static (default), absolute only on sm+ */
 }
 
 .info-div {
-    @apply flex flex-row mx-auto justify-evenly gap-12 mt-4 mb-12 flex-wrap
+    @apply flex  sm:flex-row mx-auto justify-evenly gap-12 mt-4 mb-12 flex-wrap
 }
 
 .text-div {
-    @apply mr-12
+    @apply mr-12 
 }
 
 
@@ -73,7 +73,7 @@
 }
 
 .info-btn-div {
-    @apply flex flex-row gap-6 justify-around
+    @apply flex flex-row gap-6 justify-around flex-wrap
 }
 
 .edit-btn {
@@ -111,25 +111,34 @@
 }
 
 .img-one {
-    @apply w-100 h-100 object-cover
+    @apply sm:w-100 sm:h-100 object-cover hidden md:block
 }
 
 .auction-img-div {
-    @apply flex flex-col gap-2 my-4 mx-8 
+    @apply flex flex-col gap-2 my-4 mx-8 flex-wrap
 }
 
 .img-two,
 .img-three, 
 .img-four {
-    @apply w-30 h-30 object-cover 
+    @apply sm:w-30 sm:h-30 object-cover flex
+}
+
+.img-two {
+    @apply  w-60 h-60 md:hidden;
+}
+
+.img-three,
+.img-four {
+    @apply hidden md:block
 }
 
 .row-img {
-    @apply flex flex-row gap-2 ml-4
+    @apply flex flex-row gap-2 ml-4 mx-auto
 }
 
 .auction-content {
-    @apply flex flex-row gap-24  bg-[#F6F3EE] mx-8
+    @apply flex flex-col md:flex-row gap-24  bg-[#F6F3EE] mx-8
 }
 
 .bid-btn {
@@ -145,7 +154,7 @@
 }
 
 .auction-info {
-    @apply flex flex-col gap-2 justify-start mx-auto items-start
+    @apply flex flex-col sm:gap-2 justify-start ml-4 sm:mx-auto items-start
 }
 
 .bid-end {
@@ -161,7 +170,7 @@
 }
 
 .profile-wrapper {
-    @apply flex flex-col
+    @apply flex flex-row gap-2
 }
 
 .profile-img-auction {
@@ -173,5 +182,6 @@
 }
 
 .bid-container {
-    @apply flex flex-col border p-1 
+    @apply text-sm  flex flex-col border p-1 
 }
+

@@ -10,13 +10,18 @@ document.addEventListener("DOMContentLoaded", () => {
         {id: "profile-div" , showIf: !!user },
         {id: "login-btn", showIf: !user },
         {id: "logout-btn", showIf: !!user},
+        {id:'logged-in-icon', showIf: !!user},
+        {id:'logged-out-icon', showIf: !user}
     ]
 
     elementsToToggle.forEach(({id , showIf}) => {
         const element = document.getElementById(id);
         element.style.display = showIf? "block" : "none";
+    });
+    if (user) {
+        renderAvatar(user);
     }
-)});
+});
 
 async function createAuction () {
 
@@ -70,4 +75,15 @@ function handleErrors(errors) {
         }
     });
 }
+
+function renderAvatar(user) {
+    const loggedInIcon = document.getElementById('logged-in-icon');
+    const loggedOutIcon = document.getElementById('logged-out-icon');
+
+   loggedOutIcon.href = `/pages/login.html`;
+   loggedInIcon.href = `/pages/profile.html?name=${user.name}`;
+
+
+}
+
 

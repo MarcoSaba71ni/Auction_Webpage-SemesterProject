@@ -22,6 +22,7 @@ export function renderProfilePage (profile) {
 
 
     const textDiv = document.createElement('div');
+
     textDiv.classList.add('text-div');
     const nameEmailDiv = document.createElement('div');
     const name = document.createElement('h2');
@@ -119,6 +120,7 @@ export function renderAuctionCard(auction) {
     auctionImg.alt = auction.media?.[0]?.alt;
 
     const cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
 
     const title = document.createElement('h2');
     title.textContent = auction.title;
