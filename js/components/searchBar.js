@@ -1,34 +1,46 @@
+import { apiGet } from "../api/api.js";
 
+const searchBar = document.querySelector("#searchBar");
 
-export async function searchSetUp (allListings, renderFeed) {
-    const searchBar = document.getElementById('search-bar');
+export function setupSearch(renderFeed) {
+  searchBar.addEventListener("input", async (e) => {
+    const query = e.target.value.trim().toLowerCase();
 
-    searchBar.addEventListener("input", (e)=> {
-        e.preventDefault();
-        const query = e.target.value.trim().toLowerCase();
-        doSearch(query, allListings, renderFeed);
-    })
+    if (!query) {
+      renderFeed([]); 
+      return;
+    }
+
+    try {
+      const response = await apiGet(`/auction/listings/search?q=${query}`);
+      const results = response.data;
+      renderFeed(results);
+    } catch (error) {
+      console.error("Search failed:", error);
+    }
+  });
 }
 
-export function doSearch(query, allListings, renderFeed) {
-    const filteredPosts = allListings.filter((post) => {
-    const title = post.title?.toLowerCase() || "";
-    const body = post.body?.toLowerCase() || "";
-    const author = post.author?.name?.toLowerCase() || "";
-    const email = post.author?.email?.toLowerCase() || "";
+export function setupSearch(allListings, renderFeed) {
+  const searchBar = document.querySelector("#searchBar");
 
+  searchBar.addEventListener("input", (e) => {
+    const query = e.target.value.trim().toLowerCase();
 
-    return (
-      title.includes(query) ||
-      body.includes(query) ||
-      author.includes(query) ||
-      email.includes(query)
-    );
+    const filtered = allListings.filter((post) => {
+      const title = post.title?.toLowerCase() || "";
+      const body = post.body?.toLowerCase() || "";
+      const author = post.author?.name?.toLowerCase() || "";
+      const email = post.author?.email?.toLowerCase() || "";
+
+      return (
+        title.includes(query) ||
+        body.includes(query) ||
+        author.includes(query) ||
+        email.includes(query)
+      );
+    });
+
+    renderFeed(filtered);
   });
-
-  renderFeed(filteredPosts);
-
-};
-
-
-
+}
