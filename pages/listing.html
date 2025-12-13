@@ -28,18 +28,6 @@
             <a href="pages/listing.html">
                 <h2 class="text-3xl font-[Playfair] hidden sm:block">Auction</h2>
             </a>
-            <form class="max-w-md mx-auto hidden sm:block">
-                <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only">Search</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
-                        </svg>
-                    </div>
-                    <input type="search" id="search" class="block w-full rounded-md p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Search" required />
-                    <button type="button" class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">Search</button>
-                </div>
-            </form>
             <div id="profile-div" class="flex ml-auto gap-8">
                 <a id="logged-in-icon" style="display: none;"><i class="fa-solid fa-user text-3xl cursor-pointer"></i></a>
                 <a id="logged-out-icon" ><i class="fa-regular fa-user text-3xl cursor-pointer"></i></a>
@@ -73,6 +61,18 @@
             </ul>
         </nav>
         <main>
+            <form class="max-w-md mt-8 mx-8 sm:mx-auto ">
+                <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+                        </svg>
+                    </div>
+                    <input type="search" id="search-bar" class="block w-full rounded-md p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Search" required />
+                    <button type="button" class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">Search</button>
+                </div>
+            </form>
             <section class=" flex flex-col justify-center pt-8">
                 <h1 class=" text-2xl font-[Playfair] mb-6 mx-auto gap-4 sm:text-4xl ">Action House</h1>
                 <div class=" flex flex-col mx-auto gap-1 ">
@@ -85,9 +85,27 @@
                 <div class="flex flex-row justify-center gap-4 flex-wrap pt-12 mx-auto" id="list-feed">
 
                 </div>
+                <div class="load-more-div my-4">
+                    <button 
+                    id="load-more-btn"
+                    class="flex mx-auto font-bold text-white bg-[#B77466] rounded-lg p-1 cursor-pointer mb-2 mt-2;">
+                    Load More</button>
+                </div>
             </section>
-        </main>
+        </main>        
+        <footer class="flex flex-col bg-[#E2B59A] pt-12 pb-12 gap-12">
+            <div class="mx-auto">
+                <ul class="flex flex-row gap-12">
+                    <li><a href="../index.html" class="cursor-pointer">Home</a></li>
+                    <li><a href="../index.html" class="cursor-pointer">About Us</a></li>
+                    <li><a href="listing.html" class="cursor-pointer">Auctions</a></li>
+                </ul>
+            </div>
+            <div class="mx-auto">
+                <img src="../images/Libertini logo-copy.png" class="w-50 object-cover sm:w-100 h-auto">
+            </div>
+        </footer>
         <script type="module" src="../js/src/listing.js"></script>
-        <script type="module" src="../js/components/burguer-btn.js"></script>
+        <script type="module" src="../js/components/burguer-btn.js"></script>s
     </body>
 </html>

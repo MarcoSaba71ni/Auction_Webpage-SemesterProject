@@ -26,22 +26,28 @@ document.addEventListener("DOMContentLoaded", ()=> {
     }
 });
 
+let currentPage = 1;
+const limit = 8;
 
+async function listFeed(page, renderFeed) {
 
-async function listFeed() {
-    const auctionUrl = '/auction/listings?_active=true&_sort=created&sortOrder=desc';
-    const response = await apiGet(`${auctionUrl}`);
-    console.log("RAW API RESPONSE:", response);
-    const allListings = response.data;
+    try {
+        const auctionUrl = `/auction/listings?_active=true&_sort=created&sortOrder=desc&limit=8&page=${page}`; // redefine URL
+        const response = await apiGet(`${auctionUrl}`);
+        console.log("RAW API RESPONSE:", response);
+        const allListings = response.data;
 
-    allListings.forEach(auction => {
-        console.log("AUCTION:", auction);
-        renderFeed(auction);
-        console.log(auction)
-    });
-}
+        allListings.forEach(auction => {
+            console.log("AUCTION:", auction);
+            renderFeed(auction);
+            console.log(auction)
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
 
-listFeed();
+listFeed(currentPage, renderFeed);
 
 // BUTTONS FUNCTIONALITIES
 // logout btn
@@ -56,9 +62,19 @@ logOutBtn.addEventListener("click", async ()=> {
 
 const loginLink = document.getElementById('login-link');
 
+// loggin btn
 loginLink.addEventListener("click", async ()=> {
     window.location.href = 'login.html';
     alert("You are being redirected to the Sign In page")
+})
+
+
+
+// loadmore btn
+const loadMoreBtn = document.getElementById('load-more-btn');
+loadMoreBtn.addEventListener("click", ()=> {
+    currentPage++;
+    listFeed(currentPage, renderFeed);
 })
 
 function renderAvatar(user) {
@@ -67,8 +83,7 @@ function renderAvatar(user) {
     const loggedOutIcon = document.getElementById('logged-out-icon');
 
 
-   loggedOutIcon.href = `login.html`;
-   loggedInIcon.href = `profile.html?name=${user.name}`;
-
+    loggedOutIcon.href = `login.html`;
+    loggedInIcon.href = `profile.html?name=${user.name}`;
 
 }

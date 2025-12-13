@@ -74,7 +74,7 @@
             <section class="profile-section" id="profile-section">
                 
             </section>
-            <section id="edit-profile" class="border bg-[#fff7f0] mx-12 sm:mx-auto rounded-md my-4 flex flex-col gap-3 
+            <section id="edit-profile" class="border bg-[#fff7f0] mx-12 p-4 sm:mx-auto rounded-md my-4 flex flex-col gap-3 
                     opacity-0 max-h-0 overflow-hidden 
                     transition-all duration-500 ease-out">
                 <h2 class="font-[Orbitron] flex  my-4 justify-center text-2xl">Update Profile</h2>
@@ -103,16 +103,23 @@
                         <button id="update-btn" type="submit" class="mb-2 border p-2 mt-2 bg-[#957C62] text-white rounded-md ">Update</button>
                     </div>
                 </form>
+
             </section>
             <section class="border flex flex-col mx-8 sm:mx-18">
                 <h1 class="font-[Orbitron] text-3xl flex justify-center pt-12"> Auction List</h1>
                 <div id="interacted-auctions">
                 
                 </div> 
+                <div class="load-more-div my-4">
+                    <button 
+                    id="load-more-btn"
+                    class="flex mx-auto font-bold text-white bg-[#B77466] rounded-lg p-1 cursor-pointer mb-2 mt-2;">
+                    Load More</button>
+                </div>
             </section>
 
 
-            <section class="border flex flex-col mx-18" >
+            <section class="border flex flex-col mx-8 sm:mx-18" >
                 <h1 class="font-[Orbitron] text-3xl flex justify-center py-12"> Bids History</h1>
                 <div id="users-bid">
 
