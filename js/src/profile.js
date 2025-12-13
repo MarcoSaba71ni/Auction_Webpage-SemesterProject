@@ -1,4 +1,4 @@
-import { renderProfilePage , userAuction, userBid} from "../components/renderProfile.js";
+import { renderProfilePage , renderUserBidCard, userAuction} from "../components/renderProfile.js";
 import { profileFetch , auctionFetch , bidFetch } from "../api/profileFetch.js";
 import { getUser } from "../storage/local.js";
 import { updateProfile } from "../api/profileFetch.js";
@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
 async function fetchProfile () {
     try {
         const response = await profileFetch(username);
@@ -48,9 +49,12 @@ async function fetchProfile () {
     }
 };
 
-async function fetchAuction () {
+let currentPage = 1;
+const limit = 3;
+
+async function fetchAuction (page) {
     try {
-        const response = await auctionFetch(username);
+        const response = await auctionFetch(username, page);
         const listings = response.data;
         console.log(listings);
         
@@ -63,11 +67,18 @@ async function fetchAuction () {
     }
 }
 
+const loadMoreBtn = document.getElementById('load-more-btn');
+loadMoreBtn.addEventListener("click", ()=> {
+    currentPage++;
+    fetchAuction(currentPage);
+})
+
 async function fetchBid () {
     try {
         const usersBid = document.getElementById('users-bid');
         const response = await bidFetch(username);
         const bids = response.data;
+        console.log(bids);
         if (bids.length === 0){
             const emptyBid = document.createElement('h3');
             emptyBid.classList.add('empty-bid');
@@ -75,9 +86,9 @@ async function fetchBid () {
             usersBid.appendChild(emptyBid);
             return;
         }
-        console.log(bids);
-        bids.forEach( bid  => {
-            userBid(bid);
+        console.log(`Here are all my ${bids}`);
+        bids.forEach( auction  => {
+            renderUserBidCard(auction);
         })
 
     } catch (error) {
@@ -135,13 +146,11 @@ function renderAvatar(user) {
 
     loggedOutIcon.href = `login.html`;
     loggedInIcon.href = `profile.html?name=${user.name}`;
-
-
 }
 
 
 
 fetchProfile();
-fetchAuction();
+fetchAuction(currentPage);
 fetchBid();
 

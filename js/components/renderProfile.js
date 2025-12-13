@@ -94,13 +94,6 @@ export function userAuction (auction) {
     
 }
 
-export function userBid (auction) {
-    const usersBid = document.getElementById('users-bid');
-    usersBid.classList.add('users-bid');
-
-    const card = renderAuctionCard(auction);
-    usersBid.appendChild(card);
-}
 
 export function renderAuctionCard(auction) {
     const interactedAuctions = document.getElementById('interacted-auctions');
@@ -152,7 +145,37 @@ export function renderAuctionCard(auction) {
     cardLink.append(imgDiv);
 
     return cardDiv;
+};
+
+export function renderUserBidCard(bid) {
+    const usersBid = document.getElementById('users-bid');
+    usersBid.classList.add('interacted-auctions');
+
+    const card = document.createElement('div');
+    card.classList.add('card-div');
+
+    const title = document.createElement('h3');
+    title.textContent = bid.listing?.title || "Auction";
+
+    const amount = document.createElement('p');
+    amount.textContent = `Your bid: ${bid.amount} credits`;
+
+    const date = document.createElement('p');
+    date.textContent = new Date(bid.created).toLocaleDateString();
+
+    const btn = document.createElement('button');
+    btn.textContent = "View Auction";
+    btn.classList.add('btn-bid');
+
+    btn.addEventListener("click", () => {
+        window.location.href = `auction.html?id=${bid.listing.id}`;
+    });
+
+    card.append(title, amount, date, btn);
+    usersBid.append(card);
 }
+
+
 
 
 
