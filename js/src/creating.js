@@ -1,5 +1,5 @@
 import { apiPost } from '../api/api.js';
-import { getUser } from '../storage/local.js';
+import { getUser , deleteUser } from '../storage/local.js';
 
 const createForm = document.getElementById('create-form');
 
@@ -82,8 +82,22 @@ function renderAvatar(user) {
 
    loggedOutIcon.href = `/pages/login.html`;
    loggedInIcon.href = `/pages/profile.html?name=${user.name}`;
-
-
 }
+
+const logOutBtn = document.getElementById('logout-btn');
+
+logOutBtn.addEventListener("click", async ()=> {
+
+    deleteUser();
+    window.location.href = '../index.html';
+    alert("You are being redirected to the Main Page");
+});
+
+const logoutBtnWrap = document.getElementById('logout-btn-wrap');
+logoutBtnWrap.addEventListener("click", async ()=> {
+    deleteUser();
+    window.location.href = '../index.html';
+    alert("You are being redirected to the Main Page");
+});
 
 

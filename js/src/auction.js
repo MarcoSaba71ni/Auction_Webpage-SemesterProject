@@ -1,6 +1,6 @@
 import { fetchAuction , postBid } from "../api/auctionFetch.js";
 import { renderAuction } from "../components/renderAuction.js"; 
-import { getUser } from "../storage/local.js";
+import { getUser , deleteUser } from "../storage/local.js";
 
 
 document.addEventListener("DOMContentLoaded", ()=> {
@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", ()=> {
         {id: 'logout-btn', showIf: !!user},
         {id: 'login-btn', showIf: !user},
         {id:'logged-in-icon', showIf: !!user},
-        {id:'logged-out-icon', showIf: !user}
+        {id:'logged-out-icon', showIf: !user},
+        { id: 'register_login-div', showIf: !user }
     ];
 
     elementsToToggle.forEach(({id, showIf}) =>  {
@@ -54,5 +55,12 @@ function renderAvatar(user) {
 
 
 }
+
+const logoutBtnWrap = document.getElementById('logout-btn-wrap');
+logoutBtnWrap.addEventListener("click", async ()=> {
+    deleteUser();
+    window.location.href = '../index.html';
+    alert("You are being redirected to the Main Page");
+});
 
 auctionRendering();

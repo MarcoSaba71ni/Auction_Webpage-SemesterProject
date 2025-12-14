@@ -112,7 +112,7 @@ export function renderAuction (bid) {
             location.reload();
         } catch (error) {
             console.log(error);
-            alert("Bid could not be placed");
+            alert("Bid could not be placed. Make sure you are logged in.");
         }
     })
 

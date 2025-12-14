@@ -60,6 +60,13 @@ logOutBtn.addEventListener("click", async ()=> {
     alert("You are being redirected to the Main Page");
 });
 
+const logoutBtnWrap = document.getElementById('logout-btn-wrap');
+logoutBtnWrap.addEventListener("click", async ()=> {
+    deleteUser();
+    window.location.href = '../index.html';
+    alert("You are being redirected to the Main Page");
+});
+
 const loginLink = document.getElementById('login-link');
 
 // loggin btn

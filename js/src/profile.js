@@ -1,6 +1,6 @@
 import { renderProfilePage , renderUserBidCard, userAuction} from "../components/renderProfile.js";
 import { profileFetch , auctionFetch , bidFetch } from "../api/profileFetch.js";
-import { getUser } from "../storage/local.js";
+import { getUser ,deleteUser } from "../storage/local.js";
 import { updateProfile } from "../api/profileFetch.js";
 // Get the name in the url search parameter
 
@@ -148,7 +148,21 @@ function renderAvatar(user) {
     loggedInIcon.href = `profile.html?name=${user.name}`;
 }
 
+const logOutBtn = document.getElementById('logout-btn');
 
+logOutBtn.addEventListener("click", async ()=> {
+
+    deleteUser();
+    window.location.href = '../index.html';
+    alert("You are being redirected to the Main Page");
+});
+
+const logoutBtnWrap = document.getElementById('logout-btn-wrap');
+logoutBtnWrap.addEventListener("click", async ()=> {
+    deleteUser();
+    window.location.href = '../index.html';
+    alert("You are being redirected to the Main Page");
+});
 
 fetchProfile();
 fetchAuction(currentPage);

@@ -7,55 +7,54 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
         <link href="https://fonts.googleapis.com/css2?family=Khmer&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Khmer&family=Manrope:wght@200..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+        />
         <title> Auction Page || Libertini</title>        
         <link href="../src/tailwind.css" rel="stylesheet">
     </head>
     <body>
-        <header class="flex flex-row justify-center gap-6 border p-4">
-            <div class="pr-4">
-                <img src="/images/Libertini logo-copy.png" class="w-[150px] h-[150] object-cover" >
+        <header class="flex flex-row justify-between gap-6 border p-4 relative">
+            <div class="pt-2 sm:pr-4">
+                <a href="../index.html"><img src="../images/Libertini logo-copy.png" class="w-[150px] h-[150] object-cover" ></a>
             </div>
-            <div class="flex flex-row items-center  gap-12">
-                <h2 class="text-3xl font-[Playfair] hidden sm:block">Auction</h2>
-                <form class="max-w-md mx-auto">   
-                    <label for="search"  class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
-                        </div>
-                        <input type="search" id="search-bar" class="block w-full rounded-md p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Search" required />
-                        <button type="button" class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">Search</button>
-                    </div>
-                </form>
+            <div>
+                <a href="listing.html"><h2 class="text-2xl items-center pt-2 font-[Playfair] hidden sm:block">Auctions</h2></a>
+            </div>
+            <div class="flex flex-row items-center gap-12">
                 <div id="profile-div" class="flex ml-auto gap-8">
                     <a id="logged-in-icon" style="display: none;"><i class="fa-solid fa-user text-3xl cursor-pointer"></i></a>
                     <a id="logged-out-icon" ><i class="fa-regular fa-user text-3xl cursor-pointer"></i></a>
                 </div>
-                <div>
-                    <button id="logout-btn" class="p-2 bg-red-700 text-white border rounded-md  cursor-pointer hidden sm:block" style="display: none;">Logout</button>
+                <div class="hidden sm:block">
+                    <button id="logout-btn" class="p-2 bg-red-700 text-white border rounded-md cursor-pointer" style="display: none;">Logout</button>
                 </div>
-                <div>
-                    <a href="login.html" id="login-btn" class="p-2 bg-green-700 text-white text-black border rounded md cursor-pointer hidden sm:block" style="display: none;">SignIn</a>
+                <div class="hidden sm:block">
+                    <a href="pages/login.html" id="login-btn" class="p-2 bg-green-700 text-white text-black border rounded md cursor-pointer">Sign In</a>
                 </div>
-                <div class="block p-1 rounded-sm cursor-pointer hover:border  sm:hidden">
+                <div class="block p-1 rounded-sm cursor-pointer hover:border sm:hidden">
                     <button class="cursor-pointer" id="burguer-btn">
                         <i class="fa-solid fa-bars text-3xl hover:"></i>
                     </button>
                 </div>
             </div>
         </header>
+
        <nav class="border py-3 bg-[#fff7f0] hidden sm:block">
             <ul class="flex justify-center gap-8 text-xl font-[Playfair]">
-                <a href="index.html"><li class="cursor-pointer">Home</li></a>
-                <a href="index.html"><li class="cursor-pointer">About Us</li></a>
-                <a href="pages/listing.html"><li class="cursor-pointer">Auction</li></a>
+                <a href="../index.html"><li class="cursor-pointer">Home</li></a>
+                <a href="../index.html"><li class="cursor-pointer">About Us</li></a>
+                <a href="listing.html"><li class="cursor-pointer">Auction</li></a>
             </ul>
         </nav>
         <nav id="dropdown-menu" class="block sm:hidden  border bg-[#fff7f0] block absolute w-25 right-0 top-18">
-            <ul class="flex flex-col gap-1  text-md font-[Playfair]">
-                <a href="../index.html"><li class="cursor-pointer  hover:bg-[#9c6a6a] transition">Home</li></a>
-                <a href="../index.html"><li class="cursor-pointer   hover:bg-[#9c6a6a] transition">About Us</li></a>
-                <a href="listing.html"><li class="cursor-pointer  hover:bg-[#9c6a6a] transition">Auction</li></a>
+            <ul class="flex flex-col gap-1 text-md font-[Playfair]">
+                <li class="cursor-pointer  hover:bg-[#9c6a6a] transition p-2"><a href="../index.html">Home</a></li>
+                <li class="cursor-pointer   hover:bg-[#9c6a6a] transition p-2"><a href="../index.html">About Us</a></li>
+                <li class="cursor-pointer hover:bg-[#9c6a6a] transition p-2"><a href="listing.html">Auctions</a></li>
+                <li class="cursor-pointer hover:bg-red-700 hover:text-white transition p-2"><button id="logout-btn-wrap">Logout</button></li>
             </ul>
         </nav>
         <main>
@@ -68,21 +67,28 @@
                     <input type="search" id="search" class="block w-full rounded-md p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Search" required />
                     <button type="button" class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">Search for auctions</button>
                 </div>
-            </form>            
-            <section id="auction-wrapper">
+            </form>      
+            <section id="register_login-div" class=" flex justify-center text-center my-15">
+                <h2 class=" text-sm sm:text-xl">
+                    <a href="register.html" class="text-blue-500 hover:text-blue-700">Register</a> /
+                    <a href="login.html" class="text-blue-500 hover:text-blue-700">Login</a>
+                    to place bids and get exclusive deals.
+                </h2>
+            </section>      
+            <section class="mb-6" id="auction-wrapper">
 
             </section>
         </main>
         <footer class="flex flex-col bg-[#E2B59A] pt-12 pb-12 gap-12">
             <div class="mx-auto">
                 <ul class="flex flex-row gap-12">
-                    <li><a href="index.html" class="cursor-pointer">Home</a></li>
-                    <li><a href="index.html" class="cursor-pointer">About Us</a></li>
-                    <li><a href="pages/listing.html" class="cursor-pointer">Auctions</a></li>
+                    <li><a href="../index.html" class="cursor-pointer">Home</a></li>
+                    <li><a href="../index.html" class="cursor-pointer">About Us</a></li>
+                    <li><a href="listing.html" class="cursor-pointer">Auctions</a></li>
                 </ul>
             </div>
             <div class="mx-auto">
-                <img src="../images/Libertini logo-copy.png" class="w-100 h-auto object-cover">
+                <img src="../images/Libertini logo-copy.png" class="w-50 object-cover sm:w-100 h-auto">
             </div>
         </footer>
         <script type="module" src="../js/src/auction.js"></script>

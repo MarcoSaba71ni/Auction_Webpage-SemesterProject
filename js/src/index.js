@@ -32,6 +32,14 @@ logOutBtn.addEventListener("click", async () => {
     window.location.href = 'index.html';
 })
 
+const logoutBtnWrap = document.getElementById('logout-btn-wrap');
+
+logoutBtnWrap.addEventListener("click", ()=> {
+    alert("You are logged out and redirected to the Main Page");
+    deleteUser();
+    window.location.href = 'index.html';
+})
+
 // profile path + avatar
 function renderAvatar(user) {
 
