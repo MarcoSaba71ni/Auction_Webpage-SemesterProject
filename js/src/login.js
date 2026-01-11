@@ -34,7 +34,10 @@ loginForm.addEventListener('submit', async (event) => {
         if (response.errors?.length) {
             loginError(response.errors[0].message);
             console.log(response.errors[0].message);
+            alert("Error with credentials. Try again.");
         }
+
+
 
     } catch (error) {
         console.log(error?.message);

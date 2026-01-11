@@ -168,7 +168,7 @@ export function renderUserBidCard(bid) {
     btn.classList.add('btn-bid');
 
     btn.addEventListener("click", () => {
-        window.location.href = `auction.html?id=${bid.listing.id}`;
+        window.location.href = `auction.html?id=${bid?.[0].id}`;
     });
 
     card.append(title, amount, date, btn);
