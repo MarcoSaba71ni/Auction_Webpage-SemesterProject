@@ -16,27 +16,27 @@
         <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
-        <header class="flex flex-row justify-between gap-6 border p-4 relative">
+        <header class="flex justify-between items-center gap-6 border p-4 relative md:grid md:grid-cols-3">
             <div class="pt-2 sm:pr-4">
-                <a href="../index.html"><img src="../images/Libertini logo-copy.png" class="w-[150px] h-auto object-contain"></a>
+                <a href="../index.html" class="md:hidden"><img src="../images/Libertini logo-copy.png" class="w-[150px] h-auto object-contain hover:opacity-75 transform transition-transform duration-300 ease-out hover:scale-105"></a>
             </div>
-            <div>
-                <a href="listing.html"><h2 class="text-2xl items-center pt-2 font-[Playfair] hidden sm:block">Auctions</h2></a>
+            <div class="hidden md:flex justify-center">
+                <a href="../index.html"><img src="../images/Libertini logo-copy.png" class="w-[150px] h-auto object-contain hover:opacity-75 transform transition-transform duration-300 ease-out hover:scale-105"></a>
             </div>
-            <div class="flex flex-row items-center gap-12">
-                <div id="profile-div" class="flex ml-auto gap-8">
+            <div class="flex flex-row items-center gap-8 md:justify-end">
+                <div id="profile-div" class="flex gap-8">
                     <a id="logged-in-icon" style="display: none;"><i class="fa-solid fa-user text-3xl cursor-pointer"></i></a>
-                    <a id="logged-out-icon" ><i class="fa-regular fa-user text-3xl cursor-pointer"></i></a>
+                    <a id="logged-out-icon"><i class="fa-regular fa-user text-3xl cursor-pointer"></i></a>
                 </div>
                 <div class="hidden sm:block">
                     <button id="logout-btn" class="p-2 bg-red-700 text-white border rounded-md cursor-pointer" style="display: none;">Logout</button>
                 </div>
                 <div class="hidden sm:block">
-                    <a href="pages/login.html" id="login-btn" class="p-2 bg-green-700 text-white text-black border rounded md cursor-pointer">Sign In</a>
+                    <a href="login.html" id="login-btn" class="p-2 bg-green-700 text-white border rounded cursor-pointer">Sign In</a>
                 </div>
                 <div class="block p-1 rounded-sm cursor-pointer hover:border sm:hidden">
                     <button class="cursor-pointer" id="burguer-btn">
-                        <i class="fa-solid fa-bars text-3xl hover:"></i>
+                        <i class="fa-solid fa-bars text-3xl"></i>
                     </button>
                 </div>
             </div>
@@ -44,9 +44,9 @@
 
        <nav class="border py-3 bg-[#fff7f0] hidden sm:block">
             <ul class="flex justify-center gap-8 text-xl font-[Playfair]">
-                <a href="../index.html"><li class="cursor-pointer">Home</li></a>
-                <a href="../index.html"><li class="cursor-pointer">About Us</li></a>
-                <a href="listing.html"><li class="cursor-pointer">Auction</li></a>
+                <a href="../index.html"><li class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">Home</li></a>
+                <a href="../index.html"><li class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">About Us</li></a>
+                <a href="listing.html"><li class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">Auction</li></a>
             </ul>
         </nav>
         <nav id="dropdown-menu" class="block sm:hidden  border bg-[#fff7f0] block absolute w-25 right-0 top-18">
@@ -79,16 +79,16 @@
 
             </section>
         </main>
-        <footer class="flex flex-col bg-[#E2B59A] pt-12 pb-12 gap-12">
+        <footer class="flex flex-col bg-[#fff7f0] pt-12 pb-12 gap-12">
             <div class="mx-auto">
                 <ul class="flex flex-row gap-12">
-                    <li><a href="../index.html" class="cursor-pointer">Home</a></li>
-                    <li><a href="../index.html" class="cursor-pointer">About Us</a></li>
-                    <li><a href="listing.html" class="cursor-pointer">Auctions</a></li>
+                    <li><a href="../index.html" class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">Home</a></li>
+                    <li><a href="../index.html" class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">About Us</a></li>
+                    <li><a href="listing.html" class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">Auctions</a></li>
                 </ul>
             </div>
             <div class="mx-auto">
-                <img src="../images/Libertini logo-copy.png" class="w-50 object-cover sm:w-100 h-auto">
+                <img src="../images/Libertini logo-copy.png" class="w-50 object-cover sm:w-100 h-auto transition transform duration-300 ease-out hover:scale-105">
             </div>
         </footer>
         <script type="module" src="../js/src/auction.js"></script>
