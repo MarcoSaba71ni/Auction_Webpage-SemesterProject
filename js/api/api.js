@@ -17,11 +17,11 @@ export async function apiGet( endpoint) {
         }
 
     const response = await fetch(`${API_BASE}${endpoint}`, options);
-    const data = await response.json();
+    const result = await response.json();
 
         if (!response.ok) {
-        console.error("API GET error:", data);
-        throw data;
+        console.error("API GET error:", result);
+        throw result;
     }
     
     //handle error
@@ -39,24 +39,25 @@ export async function apiPost(endpoint, data) {
         method : "POST",
         body: JSON.stringify(data)
     }
-
     if (token) {
         options.headers.Authorization = `Bearer ${token}`;
     } else {
         console.warn("Token not added")
     }
 
-    const response = await fetch(`${API_BASE}${endpoint}`, options,);
-    const result = await response.json();
-
-
-    //  current poor error handling!
-    if(!response.ok) {
-        console.error("API POST error:", result);
-        throw result; // let caller handle it
+    try {
+        const response = await fetch(`${API_BASE}${endpoint}`, options,);
+        const result = await response.json();    
+        if (!response.ok) {
+            console.error("API POST error:", result);
+            throw result; // let caller handle it
+        }    
+        return result;
+        
+    } catch (error) {
+        console.error("API POST error:", error);
+        throw error; // re-throw to let caller handle it
     }
-    
-    return result;
 }
 
 export async function apiUpdate (endpoint, data) {
@@ -76,7 +77,7 @@ export async function apiUpdate (endpoint, data) {
     const result = await response.json();
     
     if (!response.ok) {
-        console.error("API GET error:", data);
+        console.error("API PUT error:", result);
         throw result;
     }
     return result;
