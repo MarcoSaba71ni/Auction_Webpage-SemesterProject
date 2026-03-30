@@ -183,3 +183,6 @@
     @apply text-sm  flex flex-col border p-1 
 }
 
+.about-us_section {
+    @apply flex bg-[url('../images/old-bidding.jpg')] bg-cover bg-center flex-row flex-wrap justify-between h-130 my-10;
+}

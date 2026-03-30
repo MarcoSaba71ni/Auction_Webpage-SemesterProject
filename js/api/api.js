@@ -25,7 +25,7 @@ export async function apiGet( endpoint) {
     }
     
     //handle error
-    return data;
+    return result;
   
 }
 
