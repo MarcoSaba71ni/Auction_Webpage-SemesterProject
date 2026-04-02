@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         {id: 'login-btn', showIf: !user},
         {id:'logged-in-icon', showIf: !!user},
         {id:'logged-out-icon', showIf: !user},
+        {id:'mobile-logout', showIf: !!user},
         { id: 'register_login-div', showIf: !user }
     ];
 
