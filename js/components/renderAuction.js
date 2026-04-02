@@ -3,6 +3,9 @@ import { postBid } from "../api/auctionFetch.js";
 
 export function renderAuction (bid) {
     const auctionWrapper = document.getElementById('auction-wrapper');
+    auctionWrapper.classList.add('auction-wrapper');
+    if (!auctionWrapper) return;
+    auctionWrapper.innerHTML = "";
 
     const auctionHeading = document.createElement('h1');
     auctionHeading.textContent = bid.title;
@@ -14,13 +17,13 @@ export function renderAuction (bid) {
 
     const auctionImgDiv = document.createElement('div');
     auctionImgDiv.classList.add('auction-img-div');
-    
+
     const auctionInfo = document.createElement('div');
     auctionInfo.classList.add('auction-info');
 
 
     const imgOne = document.createElement('img');
-    const firstImage = bid.media?.[0]; // <= SAFEST way
+    const firstImage = bid.media?.[0];
     imgOne.classList.add('img-one');
 
 
@@ -52,10 +55,7 @@ export function renderAuction (bid) {
     imgFour.alt = fourthImage?.alt || bid.title;
 
     const profileWrapper = document.createElement('a');
-
-
-    profileWrapper.href = 'profile.html?id=${bid.seller.name}';
-    
+    profileWrapper.classList.add('profile-link');
     const profileAuction = document.createElement('div');
 
     profileWrapper.href = `profile.html?name=${bid.seller.name}`;
@@ -71,10 +71,11 @@ export function renderAuction (bid) {
 
     const profileName = document.createElement('h3');
     profileName.textContent = bid.seller.name;
+    profileName.classList.add('seller-name');
 
     const profileEmail = document.createElement('h3');
     profileEmail.textContent = bid.seller.email;
-    console.log(profileEmail);
+    profileEmail.classList.add('seller-email');
 
 
     const bidBtn = document.createElement('button');
@@ -93,6 +94,7 @@ export function renderAuction (bid) {
     bidInput.id = 'bid-input';
     bidInput.classList.add('input-bid');
     bidInput.placeholder = "place your bid here";
+
     const submitBtn = document.createElement('button');
     submitBtn.id = 'submit-btn';
     submitBtn.textContent = "Submit";
@@ -118,22 +120,31 @@ export function renderAuction (bid) {
 
     const bidInfo = document.createElement('div');
     bidInfo.classList.add('bid-info');
-    bidInfo.textContent = bid.description;
+    bidInfo.textContent = bid.description || "No description provided.";
 
     const bidEnd = document.createElement('h3');
-    bidEnd.textContent = bid.endsAt;
+    bidEnd.textContent = `Ends at: ${new Date(bid.endsAt).toLocaleString()}`;
     bidEnd.classList.add('bid-end');
 
     const countDiv = document.createElement('div');
     const bidCount = document.createElement('h3');
     bidCount.classList.add('bid-count');
-    bidCount.textContent = `Bids: ${bid._count.bids}`;
-    console.log(bidCount);
+    bidCount.textContent = `Bids: ${bid._count?.bids ?? 0}`;
+
+    const placedBid = document.createElement('div');
+    placedBid.classList.add('placed-bid');
 
     const bidWrapper = document.createElement('div');
     bidWrapper.classList.add('bid-wrapper');
 
-    const bidCard = bid.bids;
+    const bidCard = bid.bids || [];
+
+    if (!bidCard.length) {
+        const emptyBid = document.createElement('h3');
+        emptyBid.classList.add('empty-bid');
+        emptyBid.textContent = "No bids yet. Be the first one.";
+        placedBid.appendChild(emptyBid);
+    }
 
     bidCard.forEach( singleBid => {
         const bidContainer = document.createElement('div');
@@ -150,13 +161,13 @@ export function renderAuction (bid) {
         createdBid.textContent = `Date: ${new Date(singleBid.created).toLocaleDateString()}`;
     
         bidContainer.append(bidder, amount, createdBid);
-        bidWrapper.appendChild(bidContainer);
+        placedBid.appendChild(bidContainer);
     });
     
 
 
 
-    auctionWrapper.append(auctionHeading, auctionContent);
+    auctionWrapper.append(auctionHeading, profileWrapper, auctionContent);
 
     auctionContent.append( auctionImgDiv, auctionInfo);
     auctionImgDiv.append( imgOne, rowImg);
@@ -165,7 +176,13 @@ export function renderAuction (bid) {
 
     countDiv.appendChild(bidCount);
 
-    auctionInfo.append(profileWrapper, bidInfo, bidEnd, countDiv, bidWrapper, bidBtn, bidInput, submitBtn);
+    const bidActionRow = document.createElement('div');
+    bidActionRow.classList.add('bid-action-row');
+    bidActionRow.append(bidBtn, bidInput, submitBtn);
+
+    bidWrapper.append(bidInfo, bidEnd, countDiv, bidActionRow);
+
+    auctionInfo.append(bidWrapper, placedBid);
     
     profileWrapper.appendChild(profileAuction);
 

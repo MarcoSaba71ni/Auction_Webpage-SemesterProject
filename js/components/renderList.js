@@ -15,6 +15,7 @@ export function renderFeed(auction) {
     auctionImg.alt = auction.media?.[0]?.alt;
 
     const cardBody = document.createElement('div');
+    cardBody.classList.add('card-body');
 
     const title = document.createElement('h2');
     title.textContent = auction.title;
@@ -25,7 +26,7 @@ export function renderFeed(auction) {
     bidNumber.classList.add('bid-number');
 
     const bidDeadline = document.createElement('h3');
-    bidDeadline.textContent = `Bids: ${auction._count.bids}`;
+    bidDeadline.textContent = `Bids: ${auction._count?.bids ?? 0}`;
     bidDeadline.classList.add('bid-deadline');
 
     const btnDiv = document.createElement('div');

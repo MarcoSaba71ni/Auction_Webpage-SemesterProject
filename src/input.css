@@ -1,45 +1,52 @@
 @import "tailwindcss";
 
-
-    .card-div {
-        @apply block w-70 h-auto border rounded-md overflow-hidden bg-gray-100 flex flex-col items-center justify-center;
-    }
-
-
-
+.card-div {
+    @apply block w-full max-w-[320px] h-auto border border-[#eadfd2] rounded-xl overflow-hidden bg-white flex flex-col shadow-sm transition-all duration-300;
+}
 
 .card-link {
     @apply w-full;
 }
 
 .auction-img {
-    @apply w-full h-30 sm:h-60 object-cover  ;
+    @apply w-full h-42 sm:h-56 object-cover;
 }
 
 .card-div {
-    @apply flex flex-col gap-2;
+    @apply flex flex-col gap-0;
+}
+
+.card-div:hover {
+    @apply -translate-y-1 shadow-xl;
+}
+
+.card-div:hover .auction-img {
+    @apply scale-105;
 }
 
 .card-body {
-    @apply ml-2;
+    @apply flex flex-col gap-2 p-4;
 }
 
 .auction-title {
-    @apply text-sm sm:text-2xl;
+    @apply text-lg sm:text-xl font-[Playfair] text-[#2d1b1b] leading-tight;
 }
 
 .bid-number {
-    @apply font-bold text-sm text-red-500;
+    @apply text-sm text-[#7d5e47] font-medium;
 }
 
 .bid-deadline {
-    @apply font-bold;
+    @apply font-semibold text-[#432323];
 }
 
 .btn-bid {
-    @apply font-bold text-white bg-[#B77466] rounded-lg p-1 cursor-pointer mb-2 mt-2;
+    @apply font-semibold text-white bg-[#432323] rounded-md px-4 py-2 cursor-pointer mt-2 w-fit hover:bg-[#5b3232] transition-colors duration-200;
 }
 
+.placed-bid {
+    @apply flex flex-wrap gap-2 text-sm text-[#5f4a3c] mt-1;
+}
 
 /* PROFILE PAGE */
 .profile-section {
@@ -109,34 +116,34 @@
 }
 
 .img-one {
-    @apply sm:w-100 sm:h-100 object-cover hidden md:block
+    @apply block w-full h-72 lg:h-[430px] object-cover rounded-xl border border-[#e8d9cc];
 }
 
 .auction-img-div {
-    @apply flex flex-col gap-2 my-4 mx-8 flex-wrap
+    @apply grid grid-cols-1 gap-3;
 }
 
 .img-two,
 .img-three, 
 .img-four {
-    @apply sm:w-30 sm:h-30 object-cover flex
+    @apply w-full h-22 sm:h-28 object-cover rounded-lg border border-[#e8d9cc] block;
 }
 
 .img-two {
-    @apply  w-60 h-60 md:hidden;
+    @apply w-full h-22 sm:h-28;
 }
 
 .img-three,
 .img-four {
-    @apply hidden md:block
+    @apply block;
 }
 
 .row-img {
-    @apply flex flex-row gap-2 ml-4 mx-auto
+    @apply grid grid-cols-3 gap-2;
 }
 
 .auction-content {
-    @apply flex flex-col md:flex-row gap-24  bg-[#F6F3EE] mx-8
+    @apply grid grid-cols-1 md:grid-cols-[1.15fr_1fr] gap-6 md:gap-8 lg:gap-10 bg-white border border-[#e8d9cc] rounded-2xl p-4 sm:p-6 lg:p-8 mx-4 sm:mx-8 w-full max-w-6xl mx-auto shadow-sm;
 }
 
 .bid-btn {
@@ -148,19 +155,19 @@
 }
 
 .bid-info {
-    @apply mx-4 mt-8
+    @apply text-[#4e3b30] leading-7;
 }
 
 .auction-info {
-    @apply flex flex-col sm:gap-2 justify-start ml-4 sm:mx-auto items-start
+    @apply flex flex-col gap-4 justify-start items-start w-full min-w-0;
 }
 
 .bid-end {
-    @apply font-bold mx-4 mt-4
+    @apply font-semibold text-[#432323] mt-1
 }
 
 .bid-count {
-    @apply mx-4 mt-8
+    @apply text-[#5f4a3c] mt-1
 }
 
 .profile-auction {
@@ -168,7 +175,7 @@
 }
 
 .profile-wrapper {
-    @apply flex flex-row gap-2
+    @apply flex flex-row gap-2 p-1 rounded-md items-center bg-[#F6F3EE] mx-8 hover:bg-[#e0d8d1] transition-colors duration-200 duration-200 ;
 }
 
 .profile-img-auction {
@@ -176,7 +183,7 @@
 }
 
 .bid-wrapper {
-    @apply flex flex-row gap-2 mx-auto mt-8 justify-center flex-wrap
+    @apply flex flex-col gap-3 w-full bg-[#fff7f0] border border-[#e8d9cc] rounded-xl p-4;
 }
 
 .bid-container {
