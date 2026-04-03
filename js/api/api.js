@@ -89,7 +89,7 @@ export async function apiDelete () {
 
 
 export async function loginError(response) {
-    const invalidLogin = document.getElementById('span-invalid-login');
+    const invalidLogin = document.getElementById('general-span');
     const message = response?.errors?.[0]?.message || "Invalid Email or Password";    
     invalidLogin.textContent = message;
     invalidLogin.style.display = 'block';
