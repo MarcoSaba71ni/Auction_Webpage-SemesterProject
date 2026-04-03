@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
         {id: 'login-btn', showIf: !user},
         {id:'logged-in-icon', showIf: !!user},
         {id:'logged-out-icon', showIf: !user},
+        {id:'mobile-logout', showIf: !!user},
         { id: 'register_login-div', showIf: !user }
     ];
 
@@ -31,14 +32,15 @@ document.addEventListener("DOMContentLoaded", ()=> {
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
+const bidId = urlParams.get("bidId");
 console.log(id);
 
 async function auctionRendering () {
     try {
         const response = await fetchAuction(id);
-        const bid = response.data;
-        console.log(bid);
-        renderAuction(bid);
+        const listing = response.data;
+        console.log(listing);
+        renderAuction(listing, bidId);
     } catch (error) {
         console.log(error);
     }

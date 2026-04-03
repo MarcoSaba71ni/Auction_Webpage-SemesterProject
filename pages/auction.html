@@ -45,45 +45,37 @@
        <nav class="border py-3 bg-[#fff7f0] hidden sm:block">
             <ul class="flex justify-center gap-8 text-xl font-[Playfair]">
                 <a href="../index.html"><li class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">Home</li></a>
-                <a href="../index.html"><li class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">About Us</li></a>
+                <a href="about.html"><li class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">About Us</li></a>
                 <a href="listing.html"><li class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">Auction</li></a>
             </ul>
         </nav>
         <nav id="dropdown-menu" class="block sm:hidden  border bg-[#fff7f0] block absolute w-25 right-0 top-18">
             <ul class="flex flex-col gap-1 text-md font-[Playfair]">
                 <li class="cursor-pointer  hover:bg-[#9c6a6a] transition p-2"><a href="../index.html">Home</a></li>
-                <li class="cursor-pointer   hover:bg-[#9c6a6a] transition p-2"><a href="../index.html">About Us</a></li>
+                <li class="cursor-pointer   hover:bg-[#9c6a6a] transition p-2"><a href="about.html">About Us</a></li>
                 <li class="cursor-pointer hover:bg-[#9c6a6a] transition p-2"><a href="listing.html">Auctions</a></li>
-                <li class="cursor-pointer hover:bg-red-700 hover:text-white transition p-2"><button id="logout-btn-wrap">Logout</button></li>
+                <li id="mobile-logout" class="cursor-pointer hover:bg-red-700 hover:text-white transition p-2"><button id="logout-btn-wrap">Logout</button></li>
             </ul>
         </nav>
-        <main>
-            <form class="max-w-sm my-4  mx-8 block sm:hidden ">   
-                <label for="search" class="block mb-2.5 text-sm font-medium text-heading sr-only ">Search</label>
-                <div class="relative">
-                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
-                    </div>
-                    <input type="search" id="search" class="block w-full rounded-md p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body" placeholder="Search" required />
-                    <button type="button" class="absolute end-1.5 bottom-1.5 text-white bg-brand hover:bg-brand-strong box-border border border-transparent focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded text-xs px-3 py-1.5 focus:outline-none">Search for auctions</button>
-                </div>
-            </form>      
-            <section id="register_login-div" class=" flex justify-center text-center my-15">
-                <h2 class=" text-sm sm:text-xl">
+        <main class="auction-page-main">     
+            <section class="auction-page-shell">
+                <section id="register_login-div" class="flex justify-center text-center my-10 px-4">
+                    <h2 class="text-sm sm:text-xl">
                     <a href="register.html" class="text-blue-500 hover:text-blue-700">Register</a> /
                     <a href="login.html" class="text-blue-500 hover:text-blue-700">Login</a>
                     to place bids and get exclusive deals.
-                </h2>
-            </section>      
-            <section class="mb-6" id="auction-wrapper">
+                    </h2>
+                </section>
+                <section class="mb-8 flex flex-col" id="auction-wrapper">
 
+                </section>
             </section>
         </main>
         <footer class="flex flex-col bg-[#fff7f0] pt-12 pb-12 gap-12">
             <div class="mx-auto">
                 <ul class="flex flex-row gap-12">
                     <li><a href="../index.html" class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">Home</a></li>
-                    <li><a href="../index.html" class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">About Us</a></li>
+                    <li><a href="about.html" class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">About Us</a></li>
                     <li><a href="listing.html" class="p-2 cursor-pointer border-b-2 border-transparent hover:border-[#432323] hover:text-[#432323] transition-all duration-300 ease-out">Auctions</a></li>
                 </ul>
             </div>

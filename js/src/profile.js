@@ -6,6 +6,7 @@ import { updateProfile } from "../api/profileFetch.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const username = urlParams.get("name");
+const currentUser = getUser();
 console.log(username);
 
 
@@ -18,7 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
         { id: 'login-btn', showIf: !user },
         { id: 'register_login-div', showIf: !user },
         {id:'logged-in-icon', showIf: !!user},
-        {id:'logged-out-icon', showIf: !user}
+        {id:'logged-out-icon', showIf: !user},
+        {id:'mobile-logout', showIf: !!user}
     ];
     
     elementsToToggle.forEach(({id, showIf}) => {
@@ -101,6 +103,7 @@ const editForm = document.getElementById('profile-update');
 
 editForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+
     editProfile();
 })
 
@@ -108,8 +111,22 @@ function clean(value) {
     return value.trim(); 
 }
 
+function isValidUrl(value) {
+    try {
+        new URL(value);
+        return true;
+    } catch {
+        return false;
+    }
+}
 
+// edit profile function
 async function editProfile() {
+    const generalSpan = document.getElementById('general-span');
+    if (generalSpan) {
+        generalSpan.textContent = '';
+    }
+
     const updatedValues = {
         bio: clean(editForm.bio.value),
         avatar: {
@@ -119,22 +136,75 @@ async function editProfile() {
         banner: {
             url: clean(editForm.bannerUrl.value),
             alt: clean(editForm.bannerAlt.value),
-        }
+        },
     };
+
+    const hasNoData = !updatedValues.bio
+        && !updatedValues.avatar.url
+        && !updatedValues.avatar.alt
+        && !updatedValues.banner.url
+        && !updatedValues.banner.alt;
+
+    if (hasNoData) {
+        if (generalSpan) {
+            generalSpan.textContent = "Please fill at least one field to update your profile.";
+            generalSpan.style.color = "red";
+        }
+        return;
+    }
+
+    const hasOnlyAvatarField = !!updatedValues.avatar.url !== !!updatedValues.avatar.alt;
+    if (hasOnlyAvatarField) {
+        if (generalSpan) {
+            generalSpan.textContent = "Avatar URL and Avatar Alt must both be filled.";
+            generalSpan.style.color = "red";
+        }
+        return;
+    }
+
+    const hasOnlyBannerField = !!updatedValues.banner.url !== !!updatedValues.banner.alt;
+    if (hasOnlyBannerField) {
+        if (generalSpan) {
+            generalSpan.textContent = "Banner URL and Banner Alt must both be filled.";
+            generalSpan.style.color = "red";
+        }
+        return;
+    }
+
+    if (updatedValues.avatar.url && !isValidUrl(updatedValues.avatar.url)) {
+        if (generalSpan) {
+            generalSpan.textContent = "Avatar URL is invalid.";
+            generalSpan.style.color = "red";
+        }
+        return;
+    }
+
+    if (updatedValues.banner.url && !isValidUrl(updatedValues.banner.url)) {
+        if (generalSpan) {
+            generalSpan.textContent = "Banner URL is invalid.";
+            generalSpan.style.color = "red";
+        }
+        return;
+    }
 
     try {
         const response = await updateProfile( username ,updatedValues);
-
-        if (response.errors) {
-            alert("Error updating the profile");
-            return;
-        }
+        console.log(response);
 
         alert("Profile Updated!");
         console.log(response.data);
+        if (generalSpan) {
+            generalSpan.textContent = "Profile updated successfully.";
+            generalSpan.style.color = "green";
+        }
 
     } catch (error) {
         console.log(error);
+        const message = error?.errors?.[0]?.message || "Error updating profile. Please verify your inputs.";
+        if (generalSpan) {
+            generalSpan.textContent = message;
+            generalSpan.style.color = "red";
+        }
     }
 }
 
@@ -166,5 +236,17 @@ logoutBtnWrap.addEventListener("click", async ()=> {
 
 fetchProfile();
 fetchAuction(currentPage);
-fetchBid();
+
+// Bid history endpoint requires authentication; skip for guests to avoid 401.
+if (currentUser) {
+    fetchBid();
+} else {
+    const usersBid = document.getElementById('users-bid');
+    if (usersBid) {
+        const guestMessage = document.createElement('h3');
+        guestMessage.classList.add('empty-bid');
+        guestMessage.textContent = "Log in to view bid history.";
+        usersBid.appendChild(guestMessage);
+    }
+}
 
