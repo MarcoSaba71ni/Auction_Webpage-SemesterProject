@@ -57,14 +57,14 @@
                 <li id="mobile-logout" class="cursor-pointer hover:bg-red-700 hover:text-white transition p-2"><button id="logout-btn-wrap">Logout</button></li>
             </ul>
         </nav>
-        <main class="flex flex-col gap-6">
+        <main class="flex flex-col gap-6 profile-main pb-8">
             <section class="profile-section" id="profile-section">
                 
             </section>
-            <section id="edit-profile" class="border bg-[#fff7f0] mx-12 p-4 sm:mx-auto rounded-md my-4 flex flex-col gap-3 
+            <section id="edit-profile" class="border bg-[#fff7f0] mx-6 p-5 sm:mx-auto sm:max-w-3xl rounded-xl my-4 flex flex-col gap-3 shadow-sm 
                     opacity-0 max-h-0 overflow-hidden 
                     transition-all duration-500 ease-out">
-                <h2 class="font-[Orbitron] flex  my-4 justify-center text-2xl">Update Profile</h2>
+                <h2 class="font-[Orbitron] flex my-4 justify-center text-2xl text-[#432323]">Update Profile</h2>
                 <form id="profile-update" class="flex flex-col gap-3 s">
                     <div class="flex flex-row justify-center gap-5 flex-wrap ">
                         <div class="col-1">
@@ -86,18 +86,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-center">
-                        <button id="update-btn" type="submit" class="mb-2 border p-2 mt-2 bg-[#957C62] text-white rounded-md ">Update</button>
+                    <div class="flex flex-col items-center justify-center">
+                        <button id="update-btn" type="submit" class="mb-2 border w-fit px-5 py-2 mt-2 bg-[#957C62] text-white rounded-md self-center">Update</button>
+                        <span id="general-span"></span>
                     </div>
                 </form>
 
             </section>
-            <section class="border flex flex-col mx-8 sm:mx-18">
-                <h1 class="font-[Orbitron] text-3xl flex justify-center pt-12"> Auction List</h1>
+            <section class="border flex flex-col mx-4 sm:mx-10 lg:mx-18 rounded-2xl bg-white shadow-sm profile-content-panel">
+                <h1 class="font-[Orbitron] text-3xl flex justify-center pt-10 pb-2 text-[#2d1b1b]"> Auction List</h1>
                 <div id="interacted-auctions">
                 
                 </div> 
-                <div class="load-more-div my-4">
+                <div class="load-more-div my-4 pb-4">
                     <button 
                     id="load-more-btn"
                     class="flex mx-auto font-bold text-white bg-[#B77466] rounded-lg p-1 cursor-pointer mb-2 mt-2;">
@@ -106,8 +107,8 @@
             </section>
 
 
-            <section class="border flex flex-col mx-8 sm:mx-18 mb-6" >
-                <h1 class="font-[Orbitron] text-3xl flex justify-center py-12"> Bids History</h1>
+            <section class="border flex flex-col mx-4 sm:mx-10 lg:mx-18 mb-6 rounded-2xl bg-white shadow-sm profile-content-panel" >
+                <h1 class="font-[Orbitron] text-3xl flex justify-center py-10 text-[#2d1b1b]"> Bids History</h1>
                 <div id="users-bid">
 
                 </div>

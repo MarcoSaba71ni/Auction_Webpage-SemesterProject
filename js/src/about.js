@@ -1,7 +1,7 @@
 import { getUser, deleteUser } from "../storage/local.js";
 
+const user = getUser();
 document.addEventListener("DOMContentLoaded", () => {
-    const user = getUser();
 
     const elementsToToggle = [
         { id: "profile-div", showIf: !!user },
@@ -48,3 +48,19 @@ if (logoutBtnWrap) {
         alert("You are being redirected to the Main Page");
     });
 }
+
+const createBtn = document.getElementById("createBtn-about");
+createBtn.addEventListener("click", () => {
+    if (user) {
+        createBtn.addEventListener("click", () => {
+            window.location.href = "create.html";
+        });
+    }
+    if (!user) {
+        const loginCta = document.getElementById("login-cta");
+        loginCta.classList.remove("hidden");
+        loginCta.innerHTML = `Please <a href="login.html" class="text-[#432323] font-semibold hover:underline">log in</a> to create a listing.`;
+    }
+});
+
+

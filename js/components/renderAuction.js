@@ -1,9 +1,9 @@
 import { apiPost } from "../api/api.js";
 import { postBid } from "../api/auctionFetch.js";
+import { getUser , deleteUser } from "../storage/local.js";
 
-export function renderAuction (bid) {
+export function renderAuction (bid, selectedBidId = null) {
     const auctionWrapper = document.getElementById('auction-wrapper');
-    auctionWrapper.classList.add('auction-wrapper');
     if (!auctionWrapper) return;
     auctionWrapper.innerHTML = "";
 
@@ -57,9 +57,33 @@ export function renderAuction (bid) {
     const profileWrapper = document.createElement('a');
     profileWrapper.classList.add('profile-link');
     const profileAuction = document.createElement('div');
+    const authMessage = document.createElement('p');
+    authMessage.classList.add('profile-auth-message', 'hidden');
+    authMessage.textContent = "Register or Sign into check out our profiles.";
+    let authMessageTimer;
 
     profileWrapper.href = `profile.html?name=${bid.seller.name}`;
     profileAuction.classList.add('profile-wrapper');
+
+    profileWrapper.addEventListener("click", (event) => {
+        const token = localStorage.getItem("accessToken");
+        if (token) return;
+
+        event.preventDefault();
+        clearTimeout(authMessageTimer);
+        authMessage.classList.remove('hidden');
+
+        requestAnimationFrame(() => {
+            authMessage.classList.add('show');
+        });
+
+        authMessageTimer = setTimeout(() => {
+            authMessage.classList.remove('show');
+            setTimeout(() => {
+                authMessage.classList.add('hidden');
+            }, 260);
+        }, 3000);
+    });
     
     const profileImgDiv = document.createElement('div');
     const profileImgAuction = document.createElement('img');
@@ -78,16 +102,26 @@ export function renderAuction (bid) {
     profileEmail.classList.add('seller-email');
 
 
-    const bidBtn = document.createElement('button');
-    bidBtn.classList.add('bid-btn');
-    bidBtn.textContent = "Place your bid";
+    const bidBtnOpen = document.createElement('button');
+    bidBtnOpen.classList.add('bid-btn');
+    bidBtnOpen.textContent = "Place your bid";
+    const bidBtnClose = document.createElement('button');
+    bidBtnClose.classList.add('bid-btn', 'hidden');
+    bidBtnClose.textContent = "Close your bid";
 
-    bidBtn.addEventListener("click", () => {
+    bidBtnOpen.addEventListener("click", () => {
         bidInput.style.display = 'block';
         submitBtn.style.display = 'block';
+        bidBtnOpen.style.display = 'none';
+        bidBtnClose.style.display = 'block';
     });
 
-
+    bidBtnClose.addEventListener("click", () => {
+        bidInput.style.display = 'none';
+        submitBtn.style.display = 'none';
+        bidBtnOpen.style.display = 'block';
+        bidBtnClose.style.display = 'none';
+    });
 
     const bidInput = document.createElement('input');
     bidInput.type = "number";
@@ -100,21 +134,36 @@ export function renderAuction (bid) {
     submitBtn.textContent = "Submit";
     submitBtn.classList.add('bid-btn', 'hidden');
 
+    const bidStatus = document.createElement('p');
+    bidStatus.classList.add('bid-status');
+
 
     submitBtn.addEventListener("click", async (e)=> {
         e.preventDefault();
 
         const amount = Number(bidInput.value.trim());
-        if (!amount || amount < 1) return alert("Invalid bid");
+        if (!amount || amount < 1) {
+            bidStatus.textContent = "Invalid bid";
+            bidStatus.style.color = "red";
+            return;
+        }
+
+        if (!getUser()) {
+            bidStatus.innerHTML = "You must be logged in to place a bid. <a href='login.html' class='login-link text-blue-500 underline'>Login here</a>";
+            bidStatus.style.color = "gray";
+            return;
+        }
 
         try {
             const response = await postBid(bid.id, amount);
             const data = response.data;
             console.log("Bid placed:", data);
+            bidStatus.textContent = "Bid placed successfully!";
+            bidStatus.style.color = "green";
             location.reload();
         } catch (error) {
             console.log(error);
-            alert("Bid could not be placed. Make sure you are logged in.");
+            bidStatus.textContent = "Bid could not be placed. Make sure you are logged in.";
         }
     })
 
@@ -146,9 +195,16 @@ export function renderAuction (bid) {
         placedBid.appendChild(emptyBid);
     }
 
+    let selectedBidElement = null;
+
     bidCard.forEach( singleBid => {
         const bidContainer = document.createElement('div');
         bidContainer.classList.add('bid-container', 'bg-white');
+
+        if (selectedBidId && String(singleBid.id) === String(selectedBidId)) {
+            bidContainer.classList.add('highlighted-bid');
+            selectedBidElement = bidContainer;
+        }
 
         const bidder = document.createElement('h3');
         bidder.textContent = singleBid.bidder.name;
@@ -163,11 +219,20 @@ export function renderAuction (bid) {
         bidContainer.append(bidder, amount, createdBid);
         placedBid.appendChild(bidContainer);
     });
+
+    if (selectedBidElement) {
+        requestAnimationFrame(() => {
+            selectedBidElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+            });
+        });
+    }
     
 
 
 
-    auctionWrapper.append(auctionHeading, profileWrapper, auctionContent);
+    auctionWrapper.append(auctionHeading, profileWrapper, authMessage, auctionContent);
 
     auctionContent.append( auctionImgDiv, auctionInfo);
     auctionImgDiv.append( imgOne, rowImg);
@@ -178,7 +243,7 @@ export function renderAuction (bid) {
 
     const bidActionRow = document.createElement('div');
     bidActionRow.classList.add('bid-action-row');
-    bidActionRow.append(bidBtn, bidInput, submitBtn);
+    bidActionRow.append(bidBtnOpen, bidBtnClose, bidInput, submitBtn, bidStatus);
 
     bidWrapper.append(bidInfo, bidEnd, countDiv, bidActionRow);
 

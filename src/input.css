@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+#dropdown-menu {
+    @apply z-50 shadow-lg;
+}
+
 .card-div {
     @apply block w-full max-w-[320px] h-auto border border-[#eadfd2] rounded-xl overflow-hidden bg-white flex flex-col shadow-sm transition-all duration-300;
 }
@@ -48,6 +52,9 @@
     @apply flex flex-wrap gap-2 text-sm text-[#5f4a3c] mt-1;
 }
 
+.bid-action-row {
+    @apply flex col gap-1 justify-center items-center mx-auto;
+}
 /* PROFILE PAGE */
 .profile-section {
     @apply mx-8 sm:mx-18 border pt-8 py-4 mb-6;
@@ -182,14 +189,104 @@
     @apply w-20 h-20 object-cover rounded-full
 }
 
+.profile-auth-message {
+    @apply mx-auto mb-4 text-sm sm:text-base text-[#432323] bg-[#fff7f0] border border-[#e8d9cc] rounded-md px-4 py-2 text-center w-fit opacity-0 -translate-y-2 transition-all duration-250;
+}
+
+.profile-auth-message.show {
+    @apply opacity-100 translate-y-0;
+}
+
 .bid-wrapper {
     @apply flex flex-col gap-3 w-full bg-[#fff7f0] border border-[#e8d9cc] rounded-xl p-4;
+}
+
+.bid-action-row {
+    @apply flex flex-col sm:flex-row justify-center items-center gap-2 w-full mx-auto;
+}
+
+.bid-status {
+    @apply text-sm text-[#5f4a3c] mt-1;
 }
 
 .bid-container {
     @apply text-sm  flex flex-col border p-1 
 }
 
+.highlighted-bid {
+    @apply border-[#b77466] bg-[#fff4ec] ring-2 ring-[#f2c8ab] shadow-md;
+}
+
 .about-us_section {
     @apply flex bg-[url('../images/old-bidding.jpg')] bg-cover bg-center flex-row flex-wrap justify-between h-130 my-10;
+}
+
+/* Profile layout enhancements */
+.profile-main {
+    @apply bg-[linear-gradient(180deg,#fffdf9_0%,#fff6ee_100%)];
+}
+
+.profile-content-panel {
+    @apply border-[#eadfd2];
+}
+
+.profile-section {
+    @apply rounded-2xl bg-white border-[#eadfd2] shadow-sm overflow-hidden;
+}
+
+.banner-div {
+    @apply w-full h-38 sm:h-72 relative;
+}
+
+.banner-img {
+    @apply w-full h-full object-cover block;
+}
+
+.info-div {
+    @apply relative z-10 px-5 sm:px-10 pt-2 pb-4 gap-6 sm:gap-10 items-start;
+}
+
+.profile-img {
+    @apply border-4 border-white shadow-lg bg-white w-28 h-28 sm:w-44 sm:h-44 sm:-mt-24;
+}
+
+.text-div {
+    @apply mr-0 gap-4 min-w-[240px] flex-1;
+}
+
+.profile-email {
+    @apply text-sm sm:text-base text-[#7d5e47] break-all;
+}
+
+.profile-bio {
+    @apply text-[#3b2f2f] leading-7;
+}
+
+.profile-credits {
+    @apply inline-flex items-center w-fit px-3 py-1 rounded-full text-sm font-semibold bg-[#fff2e4] text-[#6a3b2f] border border-[#f1d9c4];
+}
+
+.info-btn-div {
+    @apply flex-col sm:flex-row sm:items-end sm:justify-between w-full gap-6;
+}
+
+.edit-btn {
+    @apply px-4 py-2 font-semibold cursor-pointer tracking-wide hover:bg-[#7e664e] transition-colors duration-200;
+}
+
+.interacted-auctions {
+    @apply px-3 sm:px-6 pt-6 pb-8 gap-5;
+}
+
+.profile-listing-card,
+.profile-bid-card {
+    @apply border-[#eadfd2] bg-[#fffdfa] hover:shadow-lg;
+}
+
+.profile-bid-card {
+    @apply p-4 gap-2;
+}
+
+.empty-bid {
+    @apply text-[#7d5e47] font-medium pb-6;
 }
