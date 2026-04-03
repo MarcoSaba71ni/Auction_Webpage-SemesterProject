@@ -1,20 +1,23 @@
 import { loginUser } from "../api/auth.js";
 import { saveToken } from "../storage/local.js";
-import { loginError } from "../api/api.js";
 
 const loginForm = document.getElementById('login-form');
-const loginBtn = document.getElementById('login-btn');
+const loginBtn = document.getElementById('login-btn') || loginForm?.querySelector('button[type="submit"]');
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
 const emailSpan = document.getElementById('email-span');
 const passwordSpan = document.getElementById('password-span');
+const generalSpan = document.getElementById('general-span');
+const defaultLoginLabel = loginBtn?.textContent?.trim() || 'Login';
 
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     function cleanErrors () {
-        const errorSpans = [emailSpan, passwordSpan];
+        const errorSpans = [emailSpan, passwordSpan, generalSpan];
         errorSpans.forEach(span => {
+            if (!span) return;
+            span.textContent = '';
             span.style.display = 'none';
         }
         );
@@ -60,6 +63,12 @@ loginForm.addEventListener('submit', async (event) => {
 
     // TODO: FORM VALIDATION
     try {
+        if (loginBtn) {
+            loginBtn.disabled = true;
+            loginBtn.setAttribute('aria-busy', 'true');
+            loginBtn.textContent = 'Logging in...';
+        }
+
         const response = await loginUser(credentials);
         console.log(response);
 
@@ -73,16 +82,21 @@ loginForm.addEventListener('submit', async (event) => {
             window.location.href = "../index.html";
         }
         
-        if (response.errors?.length) {
-            loginError(response.errors[0].message);
-            console.log(response.errors[0].message);
-            alert("Error with credentials. Try again.");
+    } catch (error) {
+        const apiMessage = error?.errors?.[0]?.message || '';
+
+        if (generalSpan) {
+            generalSpan.textContent = apiMessage || 'Invalid email or password.';
+            generalSpan.style.display = 'block';
         }
 
-
-
-    } catch (error) {
-        console.log(error?.message);
+        console.log(error?.message || apiMessage);
+    } finally {
+        if (loginBtn) {
+            loginBtn.disabled = false;
+            loginBtn.removeAttribute('aria-busy');
+            loginBtn.textContent = defaultLoginLabel;
+        }
     }
 
     // TODO: ERROR HANDLING

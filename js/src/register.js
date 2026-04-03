@@ -1,7 +1,6 @@
 
 import { registerUser } from "../api/auth.js";
 
-import { registerError } from "../api/api.js";
 // import registerUser from ../auth/
 
 const registerForm = document.getElementById("register-form");
@@ -32,6 +31,7 @@ registerForm.addEventListener("submit", async (event) =>  {
         email: registerForm.email.value.trim(),
         password: registerForm.password.value.trim()
     }
+
     console.log(userData);
 
     if (!userData.name || !userData.email || !userData.password) {
@@ -65,6 +65,21 @@ registerForm.addEventListener("submit", async (event) =>  {
         return;
     }
 
+    if (userData.name.includes(" ")) {
+        generalSpan.textContent = "Spaces are not allowed in username. Use letters, numbers, and _.";
+        generalSpan.style.display = 'block';
+        nameInput.focus();
+        return;
+    }
+
+    const namePattern = /^[A-Za-z0-9_]+$/;
+    if (!namePattern.test(userData.name)) {
+        generalSpan.textContent = "Username can only use letters, numbers, and _.";
+        generalSpan.style.display = 'block';
+        nameInput.focus();
+        return;
+    }
+
     if (!userData.email.endsWith("@stud.noroff.no")) {
         emailSpan.textContent = "Email must end with @stud.noroff.no";
         emailSpan.style.display = 'block';
@@ -89,8 +104,12 @@ registerForm.addEventListener("submit", async (event) =>  {
         }
     } catch (error) {
         console.log("Console error:", error);
-        if (error?.errors?.[0]?.message) {
-            generalSpan.textContent = error.errors[0].message;
+        const apiMessage = error?.errors?.[0]?.message || "";
+
+        if (apiMessage.includes("Name can only use")) {
+            generalSpan.textContent = "Spaces and special characters are not allowed in username.";
+        } else if (apiMessage) {
+            generalSpan.textContent = apiMessage;
         } else {
             generalSpan.textContent = "An error occurred during registration. Please try again.";
         }
